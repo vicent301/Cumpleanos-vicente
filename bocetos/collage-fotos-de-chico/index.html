@@ -1,0 +1,223 @@
+<title>Boceto Disfraces Vicente</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Caveat:wght@600&family=Caveat+Brush&family=Permanent+Marker&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  /* Layout: dos teléfonos con el mismo afiche (papel + una sola tinta), cambia solo la tinta */
+  :root {
+    --mesa: #e4e0d8;
+    --tinta-mesa: #2a2826;
+    --gris: #6f6a63;
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --mano: "Caveat", "Comic Sans MS", cursive;
+    --brocha: "Permanent Marker", "Comic Sans MS", cursive;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--mesa); color: var(--tinta-mesa); font-family: var(--display);
+    padding-block: 28px 48px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  header { max-width: 760px; margin: 0 auto 26px; }
+  header h1 { font: 800 1.5rem/1.15 var(--display); margin: 0 0 6px; letter-spacing: -.02em; text-wrap: balance; }
+  header p { margin: 0; color: var(--gris); max-width: 62ch; line-height: 1.5; font-weight: 500; }
+  .mesa { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 28px; }
+  .opcion { display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .rotulo { font: 500 .75rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gris); }
+  .tel {
+    width: 100%; max-width: 340px; margin: 0 auto; aspect-ratio: 9 / 18.5;
+    border-radius: 34px; border: 8px solid #111; overflow: hidden; position: relative;
+    box-shadow: 0 18px 40px rgba(0,0,0,.25);
+  }
+
+  /* ===== El afiche ===== */
+  .afiche {
+    --papel: #f3f1ec; --ink: #1f3fd1;
+    position: absolute; inset: 0; overflow-y: auto; color: var(--ink);
+    background-color: var(--papel);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    padding: 26px 18px 24px; display: flex; flex-direction: column; gap: 14px;
+  }
+    .rojo .afiche { --papel: #f0e7d6; --ink: #d8392b; }
+  .marco { border: 1.5px solid var(--ink); border-radius: 18px; padding: 16px 14px 14px; display: flex; flex-direction: column; gap: 12px; }
+  .de { font: 500 1rem/1 var(--display); text-transform: uppercase; letter-spacing: .01em; }
+  .titulo { font: 900 2.75rem/.86 var(--display); text-transform: uppercase; letter-spacing: -.045em; margin: -4px 0 0; }
+  [data-letra="marcador"] .titulo { font: 400 2.6rem/.95 var(--brocha); letter-spacing: 0; }
+  [data-letra="pincel"] .titulo { font: 400 3.3rem/.85 "Caveat Brush", cursive; letter-spacing: 0; text-transform: none; }
+  [data-letra="angosta"] .titulo { font-weight: 800; font-stretch: 62%; font-size: 4rem; line-height: .82; letter-spacing: -.02em; }
+  .letras { max-width: 760px; margin: -8px auto 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .letras span { font: 500 .75rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gris); margin-right: 4px; }
+  .letras button { font: 600 .85rem/1 var(--display); padding: 8px 12px; border-radius: 99px; border: 1.5px solid var(--tinta-mesa); background: transparent; color: var(--tinta-mesa); cursor: pointer; }
+  .letras button[aria-pressed="true"] { background: var(--tinta-mesa); color: var(--mesa); }
+
+  .hero { position: relative; margin: 0 -6px; cursor: pointer; border: 0; background: none; padding: 0; color: inherit; display: block; width: calc(100% + 12px); }
+  .hero svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .hero .num { font-family: var(--brocha); font-size: 250px; fill: var(--ink); }
+  .hero .doodle { stroke: var(--ink); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; fill: none; opacity: 0; transition: opacity .2s; }
+  .hero .doodle .lleno { fill: var(--ink); }
+  .hero .doodle .papel { fill: var(--papel); }
+  .hero .doodle.on { opacity: 1; }
+  .viene { font: 600 1.45rem/1 var(--mano); text-align: center; margin-top: -6px; min-height: 1.1em; }
+
+  .fecha { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .fecha .big { font: 900 2.3rem/.9 var(--display); letter-spacing: -.04em; }
+  .fecha .tags { display: grid; gap: 3px; text-align: right; font: 500 .6rem/1 var(--display); letter-spacing: .06em; text-transform: uppercase; padding-bottom: 4px; }
+  .tabla { border: 1.5px solid var(--ink); display: grid; grid-template-columns: 1.35fr 1fr; }
+  .tabla > div { padding: 7px 8px; display: flex; gap: 6px; align-items: baseline; min-width: 0; }
+  .tabla > div + div { border-left: 1.5px solid var(--ink); }
+  .tabla .full { grid-column: 1 / -1; border-top: 1.5px solid var(--ink); border-left: 0 !important; }
+  .tabla b { font: 800 .62rem/1 var(--display); text-transform: uppercase; letter-spacing: .04em; flex: none; }
+  .tabla span { font: 600 1.15rem/1 var(--mano); color: #1b1a19; overflow-wrap: anywhere; }
+
+  .form { display: grid; gap: 8px; }
+  .form label { font: 800 .62rem/1 var(--display); text-transform: uppercase; letter-spacing: .06em; }
+  .form input { width: 100%; font: 600 1.35rem/1 var(--mano); color: #1b1a19; background: transparent; border: 0; border-bottom: 1.5px solid var(--ink); padding: 6px 2px; border-radius: 0; }
+  .form input::placeholder { color: color-mix(in srgb, var(--ink) 40%, transparent); }
+  .btn { font: 800 .9rem/1 var(--display); text-transform: uppercase; letter-spacing: .02em; padding: 13px 14px; border-radius: 99px; border: 1.5px solid var(--ink); cursor: pointer; text-align: center; text-decoration: none; display: block; }
+  .btn-p { background: var(--ink); color: var(--papel); }
+  .btn-s { background: transparent; color: var(--ink); }
+  .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .venis { display: grid; gap: 8px; text-align: center; margin-top: 4px; }
+  .venis h3 { font: 900 2.2rem/.9 var(--display); text-transform: uppercase; letter-spacing: -.04em; margin: 0; }
+  .venis .nota-mano { margin: 0 0 4px; transform: rotate(-2deg); }
+  .wsp { display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .wsp svg { width: 20px; height: 20px; }
+  .foto-bloque { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 6px; margin-top: 6px; }
+  .foto-bloque img { width: 100%; height: auto; display: block; }
+  .auto-bloque { grid-template-columns: .8fr 1.2fr; }
+  .nota-mano { font: 600 1.45rem/1.05 var(--mano); margin: 0 0 18px; transform: rotate(-4deg); }
+  button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header>
+  <h1>Boceto con tus fotos de chico</h1>
+  <p>Papel claro, una sola tinta, letras grandes, dibujos a mano y tus fotos de chico recortadas tipo collage. Lo jugable: tocás la foto y te dibuja un disfraz encima. Para confirmar, te mandan un WhatsApp directo. Probá las letras del título con los botones de abajo. Es el mismo afiche en azul y en rojo, para que elijas la tinta.</p>
+</header>
+
+<div class="letras" role="group" aria-label="Letra del título">
+  <span>Letra del título</span>
+  <button type="button" data-l="" aria-pressed="true">Actual</button>
+  <button type="button" data-l="angosta" aria-pressed="false">Angosta</button>
+  <button type="button" data-l="marcador" aria-pressed="false">Marcador</button>
+  <button type="button" data-l="pincel" aria-pressed="false">Pincel</button>
+</div>
+
+<main class="mesa">
+  <section class="opcion">
+    <div class="rotulo">Tinta azul</div>
+    <div class="tel azul"></div>
+  </section>
+  <section class="opcion">
+    <div class="rotulo">Tinta roja</div>
+    <div class="tel rojo"></div>
+  </section>
+</main>
+
+<template id="afiche">
+  <div class="afiche">
+    <div class="marco">
+      <div class="de">Cumplo 23 y hago una</div>
+      <h2 class="titulo">Fiesta de disfraces</h2>
+
+      <button class="hero" type="button" aria-label="Disfrazar a Vicente">
+        <svg viewBox="-45 -125 595 500" aria-hidden="true">
+          <text class="num" x="-50" y="215">2</text>
+          <text class="num" x="335" y="215">3</text>
+          <image href="img/pulgar.webp" x="0" y="0" width="505" height="373"/>
+          <g transform="translate(45 14) scale(.8)">
+            <!-- corona -->
+            <g class="doodle" data-n="Rey">
+              <path d="M150 40 L140 -70 L200 -10 L250 -95 L300 -15 L360 -75 L355 40" />
+              <path d="M150 40 C220 22 290 22 355 40" />
+              <circle class="lleno" cx="250" cy="-55" r="11"/>
+            </g>
+            <!-- pirata -->
+            <g class="doodle" data-n="Pirata">
+              <path class="papel" d="M95 50 C120 -60 190 -80 250 -70 C320 -80 390 -50 410 45 C350 15 300 10 250 15 C200 10 150 18 95 50Z"/>
+              <path d="M95 50 C120 -60 190 -80 250 -70 C320 -80 390 -50 410 45 C350 15 300 10 250 15 C200 10 150 18 95 50Z"/>
+              <path d="M228 -30 l44 34 M272 -30 l-44 34" />
+              <path class="lleno" d="M285 105 C300 95 330 96 345 108 L340 140 C325 150 300 148 288 138Z"/>
+              <path d="M180 80 L400 150" stroke-width="5"/>
+            </g>
+            <!-- bigote -->
+            <g class="doodle" data-n="Señor bigote">
+              <path class="lleno" d="M282 180 C262 163 220 166 205 198 C228 188 248 198 282 192 C316 198 336 188 360 198 C345 166 302 163 282 180Z"/>
+              <circle cx="228" cy="132" r="34" />
+              <path d="M196 145 C170 200 168 260 190 320" stroke-width="4"/>
+            </g>
+            <!-- diablito -->
+            <g class="doodle" data-n="Diablito">
+              <path class="lleno" d="M160 40 C130 0 128 -45 150 -80 C158 -40 180 -10 205 20Z"/>
+              <path class="lleno" d="M340 20 C365 -10 385 -40 392 -80 C415 -45 412 0 380 42Z"/>
+            </g>
+            <!-- superhéroe -->
+            <g class="doodle" data-n="Superhéroe">
+              <path class="lleno" d="M168 128 C190 98 240 104 262 118 C285 104 335 96 360 124 C352 160 318 168 290 152 L262 140 L234 152 C206 168 172 160 168 128Z"/>
+              <path class="papel" d="M200 128 C210 116 230 116 240 128 C230 140 210 140 200 128Z M290 124 C300 112 320 112 330 124 C320 136 300 136 290 124Z"/>
+              <path d="M235 345 L290 345 L262 405Z M250 345 L262 375 L274 345" />
+            </g>
+            <!-- mago -->
+            <g class="doodle" data-n="Mago">
+              <path class="papel" d="M255 -140 L150 40 C220 25 300 25 365 40Z"/>
+              <path d="M255 -140 L150 40 C220 25 300 25 365 40Z M110 48 C200 20 320 20 405 48"/>
+              <path class="lleno" d="M250 -40 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2z"/>
+            </g>
+          </g>
+        </svg>
+      </button>
+      <div class="viene" aria-live="polite">tocá la foto y disfrazame</div>
+
+      <div class="fecha">
+        <div class="big">31/10</div>
+        <div class="tags"><span>Tragos</span><span>Música</span><span>Disfraces</span></div>
+      </div>
+      <div class="tabla">
+        <div><b>Venite de:</b><span>lo que quieras</span></div>
+        <div><b>Hora:</b><span>21:30</span></div>
+        <div class="full"><b>Dónde:</b><span>mi casa</span></div>
+      </div>
+    </div>
+
+    <div class="venis">
+      <h3>¿Venís?</h3>
+      <p class="nota-mano">Avisame por WhatsApp</p>
+      <a class="btn btn-p wsp" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>
+        Confirmo por WhatsApp</a>
+    </div>
+    <div class="foto-bloque auto-bloque">
+      <p class="nota-mano">Yo ya sé<br>cómo llegar →</p>
+      <img src="img/auto.webp" alt="Vicente de chico manejando un autito de juguete" class="auto">
+    </div>
+    <div class="fila">
+      <a class="btn btn-s" href="https://maps.app.goo.gl/QRNJ9CypNrPaN4zCA" target="_blank" rel="noopener">Cómo llegar</a>
+      <button class="btn btn-s" type="button">Agendar</button>
+    </div>
+  </div>
+</template>
+
+<script>
+  const WSP = '';  // número de Vicente con código de país, ej: 5493511234567
+  const MENSAJE = '¡Vicente! Voy a tu cumple de disfraces el sábado 31 🎭';
+  const tpl = document.getElementById('afiche');
+  document.querySelectorAll('.tel').forEach((tel, t) => {
+    tel.appendChild(tpl.content.cloneNode(true));
+    const doodles = [...tel.querySelectorAll('.doodle')];
+    const viene = tel.querySelector('.viene');
+    let i = -1;
+    tel.querySelector('.hero').addEventListener('click', () => {
+      doodles.forEach((d) => d.classList.remove('on'));
+      i = (i + 1) % doodles.length;
+      doodles[i].classList.add('on');
+      viene.textContent = 'hoy vengo de ' + doodles[i].dataset.n.toLowerCase();
+    });
+    tel.querySelector('.wsp').href = 'https://wa.me/' + WSP + '?text=' + encodeURIComponent(MENSAJE);
+  });
+  document.querySelectorAll('.letras button').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.letras button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+    if (b.dataset.l) document.body.dataset.letra = b.dataset.l; else delete document.body.dataset.letra;
+  }));
+</script>

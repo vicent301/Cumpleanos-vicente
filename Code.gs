@@ -13,17 +13,15 @@ function doPost(e) {
     const nombre = limpiar(p.nombre).slice(0, 60);
     if (!nombre) return respond(false, 'Falta el nombre');
 
-    const dormir = p.dormir === 'si' ? 'Sí' : 'No';
-
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     let sheet = ss.getSheetByName(SHEET_NAME);
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
-      sheet.appendRow(['Fecha', 'Nombre', 'Se queda a dormir']);
+      sheet.appendRow(['Fecha', 'Nombre']);
       sheet.setFrozenRows(1);
     }
 
-    sheet.appendRow([new Date(), nombre, dormir]);
+    sheet.appendRow([new Date(), nombre]);
     return respond(true);
   } finally {
     lock.releaseLock();
