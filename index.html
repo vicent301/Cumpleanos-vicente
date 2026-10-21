@@ -1,679 +1,282 @@
 <!doctype html>
-<html lang="es-AR">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cumple de Vicente</title>
-<meta name="description" content="Estás invitado al cumple de Vicente. Confirmá si venís.">
-<meta name="theme-color" content="#0e0d10">
-<meta name="color-scheme" content="dark">
-<meta name="format-detection" content="telephone=no">
-
-<!-- Open Graph: así se ve el link en WhatsApp -->
+<title>Vicente 23 · Fiesta de disfraces</title>
+<meta name="description" content="Cumplo 23 y hago una fiesta de disfraces. Sábado 31 de octubre, 21:30 hs, en mi casa. Confirmá por WhatsApp.">
+<meta name="theme-color" content="#e6e5e1">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Rumbo al cumple de Vicente">
-<meta property="og:description" content="Tocá la brújula y confirmá si venís.">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Vicente 23 · Fiesta de disfraces">
+<meta property="og:description" content="Sábado 31 de octubre, 21:30 hs, en mi casa. Disfraz libre.">
 <meta property="og:url" content="https://vicent301.github.io/Cumpleanos-vicente/">
 <meta property="og:image" content="https://vicent301.github.io/Cumpleanos-vicente/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-
+<link rel="preload" as="image" href="assets/cabeza.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Familjen+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/cara.webp" type="image/webp">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&family=Syne:wght@600;700;800&family=Open+Sans:wght@600;700&display=swap">
 <style>
-  /* Afiche en una columna. La brújula (compass) con la cara de Vicente es el juguete del hero; después la reserva, la entrada y las acciones. Look único oscuro: asfalto de noche y luz de giro ámbar. */
   :root {
-    color-scheme: dark;
-    --bg: #0e0d10;        /* asfalto */
-    --panel: #1a181d;
-    --line: #34303a;
-    --crema: #f2ead9;     /* texto y papel */
-    --muted: #a59d93;
-    --ambar: #ffb11f;     /* luz de giro, acento */
-    --rojo: #e0392b;      /* luz de freno, sello */
-    --tinta: #1d1a1f;     /* texto sobre papel */
-    --error: #ff8f80;
-
-    --display: 'Anton', Impact, 'Arial Narrow', sans-serif;
-    --texto: 'Familjen Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+    --papel: #e6e5e1;
+    --negro: #121212;
+    --gris: #6f6e6a;
+    --rojo: #c8241c;
+    --geo: "Syne", system-ui, sans-serif;
   }
-  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  html, body { overflow-x: clip; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0;
-    background: var(--bg);
-    background-image:
-      radial-gradient(110% 45% at 50% -6%, rgba(255,177,31,.28), transparent 70%),
-      radial-gradient(60% 30% at 100% 100%, rgba(224,57,43,.12), transparent 70%);
-    background-repeat: no-repeat;
-    color: var(--crema);
-    font: 16px/1.5 var(--texto);
-    -webkit-font-smoothing: antialiased;
+    margin: 0; color: var(--negro); font-family: var(--geo);
+    background: var(--papel) url("assets/papel.webp") center top / 760px auto repeat;
   }
-  .wrap {
-    max-width: 460px;
-    margin: 0 auto;
-    padding-block: 22px 40px;
+  main {
+    max-width: 440px; margin: 0 auto; display: grid; gap: 16px;
+    padding-top: calc(18px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px));
     padding-left: max(18px, env(safe-area-inset-left, 0px));
     padding-right: max(18px, env(safe-area-inset-right, 0px));
-    display: flex; flex-direction: column; gap: 30px;
-  }
-  .eyebrow {
-    font: 600 .72rem/1 var(--mono);
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--ambar);
-  }
-  h2 {
-    margin: 0;
-    font: 400 1.9rem/1 var(--display);
-    text-transform: uppercase;
-    letter-spacing: .02em;
-    text-wrap: balance;
   }
 
-  /* ---------- Hero ---------- */
-  .hero { display: flex; flex-direction: column; gap: 6px; padding-top: 4px; }
-  h1 {
-    margin: 0;
-    font: 400 clamp(4rem, 23vw, 6.2rem)/.86 var(--display);
-    text-transform: uppercase;
-    letter-spacing: .005em;
-  }
-  h1 .sub {
-    display: block;
-    font-size: .46em;
-    letter-spacing: .05em;
-    color: transparent;
-    -webkit-text-stroke: 1.3px var(--crema);
-  }
+  /* Cabeza con disfraz delante del 23 de crayón */
+  .hero { position: relative; padding-bottom: 24%; }
+  .num { position: absolute; left: -4%; top: 34%; width: 108%; height: auto; display: block; }
+  .cabeza { position: relative; border: 0; padding: 0; background: none; cursor: pointer; display: block; width: 40%; margin: 0 auto; -webkit-tap-highlight-color: transparent; }
+  .cabeza svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .disfraz { opacity: 0; transition: opacity .2s; }
+  .disfraz.on { opacity: 1; }
+  .cabeza.wiggle .disfraz.on { animation: wig .9s ease-in-out 1.2s 2; transform-box: fill-box; transform-origin: 50% 100%; }
+  @keyframes wig { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-5deg); } 65% { transform: rotate(4deg); } }
+  .pie-foto { font: 600 .68rem/1.2 var(--geo); color: var(--gris); text-align: center; margin: 2px 0 0; }
 
-  .zona-brujula { position: relative; display: grid; place-items: center; margin-block: 34px 2px; }
-  .brujula {
-    position: relative;
-    width: clamp(250px, 80vw, 340px);
-    aspect-ratio: 1;
-    padding: 0; border: 0; border-radius: 50%;
-    background: transparent;
-    cursor: pointer;
-    touch-action: manipulation;
-  }
-  .brujula:focus-visible { outline: 2px solid var(--ambar); outline-offset: 6px; }
-  .dial {
-    position: absolute; inset: 0;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle closest-side, #141216 0 80%, transparent 80.5%),
-      repeating-conic-gradient(from -1.2deg, var(--crema) 0 2.4deg, transparent 2.4deg 30deg),
-      repeating-conic-gradient(from -.5deg, rgba(242,234,217,.35) 0 1deg, transparent 1deg 10deg),
-      #141216;
-    -webkit-mask: radial-gradient(circle closest-side, transparent 0 70%, #000 70.5% 93%, transparent 93.5%);
-    mask: radial-gradient(circle closest-side, transparent 0 70%, #000 70.5% 93%, transparent 93.5%);
-    box-shadow: 0 0 0 2px #2b2730;
-  }
-  .aro {
-    position: absolute; inset: 0;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 2px #2b2730, 0 22px 50px rgba(0,0,0,.65), 0 0 0 6px #18161b, 0 0 0 7px #3a3540;
-    pointer-events: none;
-  }
-  .cara {
-    position: absolute; inset: 15%;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--ambar);
-    box-shadow: 0 0 0 3px #0b0a0d, 0 0 0 4px rgba(242,234,217,.25);
-  }
-  .cara img {
-    display: block; width: 100%; height: 100%;
-    object-fit: cover;
-    mix-blend-mode: multiply;
-    filter: contrast(1.2);
-  }
-  .aguja {
-    position: absolute; inset: 0;
-    pointer-events: none;
-    will-change: transform;
-  }
-  .aguja svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  h1 { font: 800 1.7rem/1 var(--geo); text-align: center; margin: 2px 0 0; letter-spacing: -.02em; }
+  .qas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
+  .qas div { text-align: center; }
+  .qas dt { font: 600 1rem/1.2 var(--geo); }
+  .qas dd { margin: 0; font: 600 1rem/1.2 var(--geo); }
 
-  .rumbo {
-    position: absolute; top: -30px; left: 50%;
-    transform: translateX(-50%) rotate(-3deg);
-    padding: 6px 10px 5px;
-    border-radius: 6px;
-    background: var(--ambar);
-    color: #1d1404;
-    font: 400 1.05rem/1 var(--display);
-    text-transform: uppercase;
-    letter-spacing: .02em;
-    white-space: nowrap;
-    pointer-events: none;
-    transition: transform .25s cubic-bezier(.3,1.6,.5,1);
-    z-index: 2;
-  }
-  .rumbo.salta { transform: translateX(-50%) rotate(3deg) scale(1.12); }
-  .hint {
-    font: 500 .68rem/1 var(--mono);
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: center;
-    margin-top: 8px;
-  }
-  .lineas { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
-  .lineas .regla { height: 1px; background: var(--crema); opacity: .45; }
-  .lineas span {
-    font: 500 .86rem/1.2 var(--mono);
-    letter-spacing: clamp(.14em, 1vw, .3em);
-    text-transform: uppercase;
-    text-align: center;
-  }
+  /* Calendario de papel y autito */
+  .abajo { position: relative; height: 0; padding-bottom: 92%; margin-top: 4px; }
+  .cal { position: absolute; right: -4px; top: 0; width: 86%; height: auto; transform: rotate(-4deg); filter: drop-shadow(0 2px 3px rgba(0,0,0,.18)); }
+  .auto { position: absolute; left: -18px; bottom: 0; width: 50%; height: auto; transform: rotate(-3deg); }
+  .cuenta { text-align: center; font: 600 .95rem/1.3 var(--geo); margin: 0; }
+  .cuenta strong { color: var(--rojo); font-weight: 800; }
 
-  /* ---------- ¿Venís? ---------- */
-  .reserva { display: flex; flex-direction: column; gap: 14px; }
-  .panel {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 18px 16px;
-  }
-  .campo { display: flex; flex-direction: column; gap: 8px; }
-  .campo label, legend { font-weight: 600; font-size: .92rem; }
-  #nombre {
-    width: 100%;
-    min-height: 54px;
-    padding: 0 16px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--bg);
-    color: var(--crema);
-    font: 600 1.05rem var(--texto);
-  }
-  #nombre::placeholder { color: #6a636f; font-weight: 500; }
-  #nombre:focus { outline: none; border-color: var(--ambar); box-shadow: 0 0 0 3px rgba(255,177,31,.22); }
-  #nombre[aria-invalid="true"] { border-color: var(--error); }
-
-  fieldset { border: 0; padding: 0; margin: 18px 0 0; min-width: 0; }
-  legend { padding: 0; margin-bottom: 8px; }
-  .opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .opciones input { position: absolute; opacity: 0; pointer-events: none; }
-  .opciones label {
-    display: flex; flex-direction: column; align-items: center; gap: 2px;
-    padding: 12px 8px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--bg);
-    text-align: center;
-    cursor: pointer;
-    transition: border-color .15s, background .15s;
-  }
-  .opciones strong { font: 400 1.3rem/1.1 var(--display); text-transform: uppercase; }
-  .opciones small { font-size: .8rem; color: var(--muted); }
-  .opciones input:checked + label { border-color: var(--ambar); background: rgba(255,177,31,.1); }
-  .opciones input:checked + label strong { color: var(--ambar); }
-  .opciones input:focus-visible + label { outline: 2px solid var(--ambar); outline-offset: 2px; }
-
+  .acciones { display: grid; gap: 10px; margin-top: 4px; }
   .btn {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    width: 100%;
-    min-height: 54px;
-    margin-top: 18px;
-    border: 0; border-radius: 12px;
-    background: var(--ambar);
-    color: #1d1404;
-    font: 700 1.02rem var(--texto);
-    cursor: pointer;
-    transition: transform .1s;
+    font: 700 .95rem/1 var(--geo); padding: 16px 12px; border-radius: 4px; border: 2px solid var(--negro);
+    cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 9px;
+    color: var(--negro); background: transparent; -webkit-tap-highlight-color: transparent; transition: transform .12s;
   }
-  .btn:active { transform: translateY(1px); }
-  .btn:focus-visible { outline: 2px solid var(--crema); outline-offset: 3px; }
-  .btn[disabled] { opacity: .6; cursor: progress; }
-  .msg { min-height: 1.4em; margin: 8px 0 0; font-size: .9rem; color: var(--muted); text-align: center; }
-  .msg.error { color: var(--error); }
-  .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-  /* ---------- Entrada ---------- */
-  .ticket { position: relative; background: var(--crema); color: var(--tinta); border-radius: 14px; overflow: hidden; }
-  .ticket .top { padding: 18px 18px 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 12px; }
-  .ticket .k { font: 600 .66rem/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #7d6f5c; }
-  .ticket .v { font: 400 1.7rem/1.05 var(--display); text-transform: uppercase; overflow-wrap: anywhere; }
-  .ticket .v.pendiente { color: #a89a83; font-size: 1.25rem; }
-  .ticket .v.chico { font: 600 1rem/1.3 var(--texto); text-transform: none; }
-  .ticket .full { grid-column: 1 / -1; }
-  .perf { position: relative; border-top: 2px dashed #cdbfa6; margin-inline: 14px; }
-  .perf::before, .perf::after { content: ""; position: absolute; top: -12px; width: 22px; height: 22px; border-radius: 50%; background: var(--bg); }
-  .perf::before { left: -25px; }
-  .perf::after { right: -25px; }
-  .ticket .bottom {
-    display: flex; justify-content: space-between; align-items: center; gap: 10px;
-    padding: 12px 18px 14px;
-    font: 600 .7rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: #7d6f5c;
-  }
-  .barcode { flex: none; width: 110px; height: 26px; background: repeating-linear-gradient(90deg, var(--tinta) 0 2px, transparent 2px 4px, var(--tinta) 4px 5px, transparent 5px 8px, var(--tinta) 8px 11px, transparent 11px 12px); }
-
-  /* Entrada confirmada */
-  .listo { display: flex; flex-direction: column; gap: 12px; }
-  .listo:focus { outline: none; }
-  .listo .ticket { transform: rotate(-1deg); }
-  .listo .a-nombre { font: 400 2.1rem/1 var(--display); text-transform: uppercase; overflow-wrap: anywhere; }
-  .sello {
-    position: absolute; right: 16px; top: 34%;
-    padding: 5px 10px;
-    border: 3px solid var(--rojo); border-radius: 8px;
-    color: var(--rojo);
-    font: 400 1.4rem/1 var(--display);
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    transform: rotate(-12deg);
-    mix-blend-mode: multiply;
-  }
-  .sellado .sello { animation: sellar .45s cubic-bezier(.2,1.6,.4,1) .2s backwards; }
-  @keyframes sellar { from { opacity: 0; transform: rotate(-12deg) scale(2.2); } }
-  .listo p { margin: 0; text-align: center; color: var(--muted); font-size: .92rem; }
-  .otra { align-self: center; background: none; border: 0; padding: 6px; color: var(--muted); font: 500 .9rem var(--texto); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-
-  /* ---------- Cuenta regresiva ---------- */
-  .count { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-  .cell { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 4px 10px; text-align: center; }
-  .num { font: 700 clamp(1.5rem, 8vw, 2rem)/1 var(--mono); font-variant-numeric: tabular-nums; }
-  .lab { margin-top: 6px; font: 500 .62rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-  .status { margin: 10px 0 0; color: var(--muted); font-size: .92rem; }
-  .status strong { color: var(--ambar); }
-
-  /* ---------- Acciones ---------- */
-  .acciones { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .accion {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    min-height: 50px; padding: 10px;
-    border: 1px solid var(--line); border-radius: 12px;
-    background: var(--panel);
-    color: var(--crema);
-    font: 600 .92rem var(--texto);
-    text-align: center; text-decoration: none;
-    cursor: pointer;
-  }
-  .accion.ancha { grid-column: 1 / -1; }
-  .accion svg { width: 18px; height: 18px; flex: none; }
-  .accion:active { transform: translateY(1px); }
-  .accion:focus-visible { outline: 2px solid var(--ambar); outline-offset: 2px; }
-
-  /* ---------- Bocina ---------- */
-  .bocina {
-    display: flex; align-items: center; gap: 14px;
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px dashed var(--line); border-radius: 16px;
-    background: transparent;
-    color: var(--crema);
-    text-align: left;
-    cursor: pointer;
-  }
-  .bocina .volante {
-    flex: none; width: 52px; height: 52px; border-radius: 50%;
-    display: grid; place-items: center;
-    background: var(--panel);
-    box-shadow: inset 0 0 0 4px #2b2730;
-    color: var(--ambar);
-  }
-  .bocina b { display: block; font: 400 1.25rem/1.1 var(--display); text-transform: uppercase; }
-  .bocina span { color: var(--muted); font-size: .86rem; }
-  .bocina.suena .volante { animation: bocinazo .12s linear 4 alternate; }
-  .bocina:focus-visible { outline: 2px solid var(--ambar); outline-offset: 2px; }
-  @keyframes bocinazo { from { transform: translateX(-2px) rotate(-6deg); } to { transform: translateX(2px) rotate(6deg); } }
-
-  .toast {
-    position: fixed; left: 50%;
-    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-    transform: translateX(-50%);
-    max-width: calc(100% - 32px);
-    padding: 10px 16px;
-    border-radius: 999px;
-    background: var(--crema);
-    color: var(--tinta);
-    font-weight: 600; font-size: .9rem;
-    text-align: center;
-    z-index: 20;
-  }
-  footer { color: var(--muted); font: 500 .74rem/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; text-align: center; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .rumbo, .bocina .volante { transition: none; animation: none !important; }
-    .sellado .sello { animation: none; }
-  }
+  .btn:active { transform: scale(.98); }
+  .btn svg { width: 21px; height: 21px; flex: none; }
+  .btn-wsp { background: var(--negro); color: #f3f2ee; font-size: 1rem; padding: 19px 12px; }
+  .fila .btn { font-size: .9rem; padding: 15px 8px; gap: 7px; }
+  .fila .btn svg { width: 19px; height: 19px; }
+  .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .btn:focus-visible, .cabeza:focus-visible { outline: 3px solid var(--rojo); outline-offset: 3px; }
+  .pie { text-align: center; font: 600 .75rem/1.4 var(--geo); color: var(--gris); margin: 6px 0 0; }
+  .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--negro); color: #fff; font: 600 .9rem/1 var(--geo); padding: 12px 16px; border-radius: 99px; }
   [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .disfraz, .btn { transition: none; }
+    .cabeza.wiggle .disfraz.on { animation: none; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
+<main>
+  <div class="hero">
+    <svg class="num" viewBox="0 0 560 420" aria-hidden="true">
+      <defs>
+        <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="6" result="w"/>
+          <feDisplacementMap in="SourceGraphic" in2="w" scale="5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+          <feTurbulence type="fractalNoise" baseFrequency=".07 .9" numOctaves="2" seed="3" result="vetas"/>
+          <feColorMatrix in="vetas" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.55" result="m1"/>
+          <feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="1" seed="9" result="grano"/>
+          <feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -4 3.15" result="m2"/>
+          <feComposite in="m1" in2="m2" operator="in" result="m"/>
+          <feComposite in="d" in2="m" operator="in"/>
+        </filter>
+      </defs>
+      <g font-family="Rubik, 'Arial Black', sans-serif" font-weight="900" font-size="440">
+        <g fill="none" stroke="#f6f5f1" stroke-width="16" stroke-linejoin="round"><text x="0" y="400">2</text><text x="560" y="400" text-anchor="end">3</text></g>
+        <g fill="#141414" filter="url(#crayon)"><text x="0" y="400">2</text><text x="560" y="400" text-anchor="end">3</text></g>
+      </g>
+    </svg>
+    <button class="cabeza wiggle" id="cabeza" type="button" aria-label="Cambiarle el disfraz a Vicente">
+      <svg viewBox="-20 -350 320 720" aria-hidden="true">
+        <defs>
+          <filter id="acuarela" x="-15%" y="-15%" width="130%" height="130%">
+            <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="4" result="t"/>
+            <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G" result="d"/>
+            <feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="11" result="manchas"/>
+            <feColorMatrix in="manchas" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -.6 0 0 0 .3" result="claro"/>
+            <feComposite in="claro" in2="d" operator="in" result="claro2"/>
+            <feMerge result="pintado"><feMergeNode in="d"/><feMergeNode in="claro2"/></feMerge>
+            <feMorphology in="d" operator="erode" radius="2.5" result="dentro"/>
+            <feComposite in="d" in2="dentro" operator="out" result="borde"/>
+            <feComponentTransfer in="borde" result="borde2"><feFuncR type="linear" slope=".55"/><feFuncG type="linear" slope=".55"/><feFuncB type="linear" slope=".55"/><feFuncA type="linear" slope=".7"/></feComponentTransfer>
+            <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="5" result="grano"/>
+            <feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.5 .55" result="grano2"/>
+            <feComposite in="grano2" in2="d" operator="in" result="grano3"/>
+            <feMerge><feMergeNode in="pintado"/><feMergeNode in="borde2"/><feMergeNode in="grano3"/></feMerge>
+          </filter>
+          <pattern id="rayas" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+            <rect width="64" height="64" fill="#f2ece4"/><rect width="64" height="34" fill="#cf3027"/>
+          </pattern>
+          <pattern id="rayas-v" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+            <rect width="56" height="56" fill="#efe9dc"/><rect width="56" height="28" fill="#2f2a52"/>
+          </pattern>
+        </defs>
+        <image href="assets/cabeza.webp" x="0" y="0" width="279" height="351"/>
+        <g filter="url(#acuarela)">
+          <!-- gorrito de cumple -->
+          <g class="disfraz on">
+            <path d="M128 -300 L16 92 C90 116 190 112 266 78 Z" fill="url(#rayas)"/>
+            <path d="M16 92 C90 116 190 112 266 78 L262 64 C190 98 92 100 20 78Z" fill="#a91d16"/>
+            <g fill="#cf3027"><circle cx="128" cy="-306" r="20"/><circle cx="110" cy="-318" r="13"/><circle cx="146" cy="-318" r="13"/><circle cx="128" cy="-332" r="12"/><circle cx="112" cy="-296" r="10"/><circle cx="145" cy="-294" r="10"/></g>
+          </g>
+          <!-- corona -->
+          <g class="disfraz">
+            <path d="M14 96 L2 -40 L72 20 L138 -88 L204 20 L276 -40 L264 92 C190 72 90 72 14 96Z" fill="#e8b530"/>
+            <path d="M14 96 C90 72 190 72 264 92 L262 70 C190 52 90 52 16 74Z" fill="#c38c17"/>
+            <circle cx="138" cy="-46" r="15" fill="#c8241c"/><circle cx="74" cy="44" r="10" fill="#2552b8"/><circle cx="204" cy="44" r="10" fill="#2552b8"/>
+          </g>
+          <!-- sombrero de bruja -->
+          <g class="disfraz">
+            <path d="M150 -290 C120 -230 96 -140 82 -20 L196 -16 C194 -110 196 -200 230 -250 C196 -238 168 -262 150 -290Z" fill="#2b2541"/>
+            <path d="M84 -40 L196 -36 L198 -4 L82 -6Z" fill="url(#rayas-v)"/>
+            <ellipse cx="140" cy="20" rx="168" ry="40" fill="#231e36"/>
+          </g>
+          <!-- cuernitos -->
+          <g class="disfraz">
+            <path d="M30 92 C-6 40 -4 -40 30 -96 C40 -36 70 18 110 54Z" fill="#c8241c"/>
+            <path d="M248 88 C284 36 282 -44 248 -100 C238 -40 208 14 168 50Z" fill="#c8241c"/>
+            <path d="M10 96 C80 60 200 56 270 92" fill="none" stroke="#1d1d1d" stroke-width="14" stroke-linecap="round"/>
+          </g>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <p class="pie-foto">tocá y cambiá el disfraz</p>
 
-  <section class="hero" aria-label="Invitación">
-    <div class="eyebrow">Te invito</div>
-    <h1>Vicente<span class="sub" id="sub">Rumbo al cumple</span></h1>
+  <h1><span class="sr">Cumplo 23 y hago una </span>Fiesta de disfraces</h1>
+  <dl class="qas">
+    <div><dt>¿Dónde?</dt><dd>Mi casa</dd></div>
+    <div><dt>¿Cuándo?</dt><dd>21:30 hs</dd></div>
+    <div><dt>¿De qué?</dt><dd>Libre</dd></div>
+  </dl>
 
-    <div class="zona-brujula">
-      <div class="rumbo" id="rumbo" aria-hidden="true">El cumple</div>
-      <button class="brujula" id="brujula" type="button" aria-label="Brújula con la cara de Vicente. Tocala para hacer girar la aguja.">
-        <div class="dial"></div>
-        <div class="cara">
-          <picture>
-            <source srcset="assets/cara.webp" type="image/webp">
-            <img src="assets/cara.jpg" width="480" height="480" alt="">
-          </picture>
-        </div>
-        <div class="aguja" id="aguja">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <path d="M50 1.5 L55.5 13 L50 11 L44.5 13 Z" fill="#ffb11f" stroke="#0b0a0d" stroke-width=".8" stroke-linejoin="round"/>
-            <path d="M50 98.5 L53.5 89 L50 90.5 L46.5 89 Z" fill="#f2ead9" stroke="#0b0a0d" stroke-width=".8" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="aro"></div>
-      </button>
+  <div class="abajo">
+    <svg class="cal" viewBox="0 0 400 360" role="img" aria-label="Sábado 31 de octubre de 2026, marcado en el calendario">
+      <defs>
+        <linearGradient id="hoja" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#959593"/><stop offset="1" stop-color="#7e7e7c"/></linearGradient>
+        <filter id="marcador" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="3" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="5" result="d"/>
+          <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="9" result="g"/>
+          <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.9" result="ga"/>
+          <feComposite in="d" in2="ga" operator="in"/>
+        </filter>
+      </defs>
+      <rect width="400" height="360" rx="4" fill="url(#hoja)"/>
+      <text x="28" y="96" font-family="'Open Sans', Arial, sans-serif" font-weight="700" font-size="36" fill="#1c1c1c">2026</text>
+      <text x="376" y="64" font-family="'Open Sans', Arial, sans-serif" font-weight="700" font-size="34" fill="#1c1c1c" text-anchor="end">OCTUBRE</text>
+      <g id="cal-grilla" font-family="'Open Sans', Arial, sans-serif" font-weight="600" fill="#1f1f1f" text-anchor="middle"></g>
+      <path transform="translate(-10 6)" filter="url(#marcador)" d="M318 300 C296 284 270 294 274 318 C278 342 318 350 340 334 C360 318 352 290 322 286 C300 284 284 294 282 306 M300 298 C316 284 346 292 350 312" fill="none" stroke="#c8241c" stroke-width="11" stroke-linecap="round" opacity=".88"/>
+    </svg>
+    <img class="auto" src="assets/auto-puntos.webp" width="566" height="510" alt="Vicente de chico manejando un autito de juguete">
+  </div>
+  <p class="cuenta" id="cuenta"></p>
+
+  <div class="acciones">
+    <a class="btn btn-wsp" id="btn-wsp" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>
+      Confirmo por WhatsApp</a>
+    <div class="fila">
+      <a class="btn" id="btn-mapa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        Cómo llegar</a>
+      <a class="btn" id="btn-agenda" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        Agendar</a>
     </div>
-    <div class="hint">Tocá la brújula</div>
-
-    <div class="lineas">
-      <div class="regla"></div>
-      <span id="l-fecha">Fecha a confirmar</span>
-      <div class="regla"></div>
-      <span id="l-lugar">Hora y lugar a confirmar</span>
-      <div class="regla"></div>
-    </div>
-  </section>
-
-  <section class="reserva" id="confirmar" aria-labelledby="t-venis">
-    <h2 id="t-venis">¿Venís?</h2>
-
-    <form class="panel" id="form" novalidate>
-      <div class="campo">
-        <label for="nombre">Tu nombre</label>
-        <input type="text" id="nombre" name="nombre" maxlength="60" autocomplete="name"
-               autocapitalize="words" enterkeyhint="send" spellcheck="false"
-               placeholder="Nombre y apellido" required aria-describedby="msg">
-      </div>
-
-      <div class="trampa" aria-hidden="true">
-        <label for="web">No completes este campo</label>
-        <input type="text" id="web" name="web" tabindex="-1" autocomplete="off">
-      </div>
-
-      <button class="btn" type="submit" id="enviar">Confirmo</button>
-      <p class="msg" id="msg" role="status"></p>
-    </form>
-
-    <div class="listo" id="listo" hidden tabindex="-1">
-      <div class="ticket">
-        <div class="top">
-          <div class="full"><div class="k">A nombre de</div><div class="a-nombre" id="listo-nombre"></div></div>
-        </div>
-        <div class="perf"></div>
-        <div class="bottom"><span>Admite: vos</span><div class="barcode" aria-hidden="true"></div></div>
-        <div class="sello" aria-hidden="true">Confirmado</div>
-      </div>
-      <p id="listo-texto">Ya estás en la lista.</p>
-      <button type="button" class="otra" id="otra">Confirmar a otra persona</button>
-    </div>
-  </section>
-
-  <section class="ticket" aria-label="Datos del cumple">
-    <div class="top">
-      <div><div class="k">Día</div><div class="v pendiente" id="t-dia">A confirmar</div></div>
-      <div><div class="k">Horario</div><div class="v pendiente" id="t-hora">A confirmar</div></div>
-      <div class="full"><div class="k">Lugar</div><div class="v pendiente" id="t-lugar">A confirmar</div></div>
-    </div>
-    <div class="perf"></div>
-    <div class="bottom"><span>Admite: vos</span><div class="barcode" aria-hidden="true"></div></div>
-  </section>
-
-  <section id="cuenta" aria-label="Cuenta regresiva" hidden>
-    <div class="count">
-      <div class="cell"><div class="num" id="c-d">--</div><div class="lab">Días</div></div>
-      <div class="cell"><div class="num" id="c-h">--</div><div class="lab">Horas</div></div>
-      <div class="cell"><div class="num" id="c-m">--</div><div class="lab">Min</div></div>
-      <div class="cell"><div class="num" id="c-s">--</div><div class="lab">Seg</div></div>
-    </div>
-    <p class="status" id="status"></p>
-  </section>
-
-  <section class="acciones" aria-label="Acciones">
-    <a class="accion ancha" id="btn-agenda" href="#" target="_blank" rel="noopener" hidden>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-      Agendar en el calendario</a>
-    <a class="accion" id="btn-mapa" href="#" target="_blank" rel="noopener" hidden>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-      Cómo llegar</a>
-    <button class="accion" id="btn-copiar" type="button" hidden>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-      Copiar ubicación</button>
-    <button class="accion ancha" id="btn-compartir" type="button">
+    <button class="btn" id="btn-compartir" type="button">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
-      Pasale la invitación a alguien</button>
-  </section>
-
-  <button class="bocina" id="bocina" type="button">
-    <span class="volante" aria-hidden="true">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M3.5 10.5h6M14.5 10.5h6M12 14.5V21"/></svg>
-    </span>
-    <span><b>Tocá bocina</b><span>Avisale a Vicente que ya estás llegando.</span></span>
-  </button>
-
-  <footer id="pie">Vicente · 2026</footer>
-</div>
+      Compartir invitación</button>
+  </div>
+  <p class="pie">Vicente · 31.10.2026</p>
+</main>
 <div class="toast" id="toast" role="status" hidden></div>
 
+<style>.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }</style>
 <script>
-  // ====== Datos del cumple (completar) ======
+  // ====== Datos del cumple ======
   const CONFIG = {
-    edad: 23,
-    fecha: '2026-10-31T21:30:00-03:00',  // inicio
-    horas: 5,                // duración para el calendario
-    lugar: 'Casa de Vicente',
-    direccion: 'X5972 Pilar, Córdoba',
-    mapa: 'https://maps.app.goo.gl/QRNJ9CypNrPaN4zCA',  // link de Google Maps
-    scriptUrl: ''            // URL /exec del Apps Script
+    fecha: '2026-10-31T21:30:00-03:00',
+    horas: 5,                                    // duración para el calendario
+    lugar: 'Casa de Vicente, Pilar, Córdoba',
+    mapa: 'https://maps.app.goo.gl/QRNJ9CypNrPaN4zCA',
+    whatsapp: '5493572534546',                   // con código de país, sin +
+    mensaje: '¡Vicente! Voy a tu cumple de disfraces el sábado 31 🎭'
   };
 
   const $ = (id) => document.getElementById(id);
-  const ZONA = 'America/Argentina/Buenos_Aires';
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const pad = (n) => String(n).padStart(2, '0');
+  const inicio = new Date(CONFIG.fecha);
+  const fin = new Date(inicio.getTime() + CONFIG.horas * 3600e3);
+  const utc = (d) => d.toISOString().replace(/[-:]|\.\d{3}/g, '');
 
-  // ----- Datos según configuración -----
-  if (CONFIG.edad) $('sub').textContent = 'Cumple ' + CONFIG.edad;
-  if (CONFIG.fecha) {
-    const f = new Date(CONFIG.fecha);
-    const fin = new Date(f.getTime() + CONFIG.horas * 3600e3);
-    const dia = f.toLocaleDateString('es-AR', { weekday: 'short', day: '2-digit', month: '2-digit', timeZone: ZONA }).replace(/[.,]/g, '');
-    const hora = (d) => d.toLocaleTimeString('es-AR', { hour: 'numeric', minute: '2-digit', timeZone: ZONA }).replace(':00', '');
-    $('t-dia').textContent = dia;
-    $('t-hora').textContent = hora(f) + ' → ' + hora(fin) + ' hs';
-    $('t-dia').classList.remove('pendiente');
-    $('t-hora').classList.remove('pendiente');
-    $('l-fecha').textContent = f.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: '2-digit', timeZone: ZONA }).replace(',', '');
-    $('l-lugar').textContent = hora(f) + ' hs' + (CONFIG.lugar ? ' · ' + CONFIG.lugar : '');
-    $('pie').textContent = 'Vicente · ' + f.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: ZONA }).replace(/\//g, '.');
+  $('btn-wsp').href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(CONFIG.mensaje);
+  $('btn-mapa').href = CONFIG.mapa;
+  $('btn-agenda').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text=' + encodeURIComponent('Cumple 23 de Vicente · Fiesta de disfraces')
+    + '&dates=' + utc(inicio) + '/' + utc(fin)
+    + '&location=' + encodeURIComponent(CONFIG.lugar)
+    + '&details=' + encodeURIComponent('Disfraz libre. Cómo llegar: ' + CONFIG.mapa);
 
-    const utc = (d) => d.toISOString().replace(/[-:]|\.\d{3}/g, '');
-    $('btn-agenda').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-      + '&text=' + encodeURIComponent('Cumple de Vicente')
-      + '&dates=' + utc(f) + '/' + utc(fin)
-      + (CONFIG.direccion ? '&location=' + encodeURIComponent(CONFIG.direccion) : '');
-    $('btn-agenda').hidden = false;
-    iniciarCuenta(f, fin);
-  }
-  if (CONFIG.lugar || CONFIG.direccion) {
-    $('t-lugar').textContent = CONFIG.lugar || CONFIG.direccion;
-    $('t-lugar').classList.remove('pendiente');
-    if (CONFIG.lugar && CONFIG.direccion) {
-      $('t-lugar').insertAdjacentHTML('afterend', '<div class="v chico"></div>');
-      $('t-lugar').nextElementSibling.textContent = CONFIG.direccion;
-    }
-  }
-  if (CONFIG.direccion) {
-    $('btn-mapa').href = CONFIG.mapa || 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(CONFIG.direccion);
-    $('btn-mapa').hidden = false;
-    $('btn-copiar').hidden = false;
-  }
-
-  function iniciarCuenta(inicio, fin) {
-    $('cuenta').hidden = false;
-    const tick = () => {
-      const ahora = Date.now(), diff = inicio - ahora;
-      if (diff > 0) {
-        let s = Math.floor(diff / 1000);
-        const dias = Math.floor(s / 86400);
-        $('c-d').textContent = pad(dias);
-        $('c-h').textContent = pad(Math.floor(s % 86400 / 3600));
-        $('c-m').textContent = pad(Math.floor(s % 3600 / 60));
-        $('c-s').textContent = pad(s % 60);
-        $('status').innerHTML = dias === 0 ? '<strong>Es hoy.</strong> Nos vemos a la noche.' : 'Faltan <strong>' + (dias === 1 ? '1 día' : dias + ' días') + '</strong>. Andá calentando motores.';
-      } else {
-        ['c-d', 'c-h', 'c-m', 'c-s'].forEach((k) => $(k).textContent = '00');
-        $('status').innerHTML = ahora < fin ? '<strong>Está pasando ahora.</strong> Venite.' : 'Ya fue. Gracias por venir.';
-      }
-    };
-    tick();
-    setInterval(tick, 1000);
-  }
-
-  // ----- Brújula: la aguja tiembla sola y al tocar gira y frena apuntando al cumple -----
-  const aguja = $('aguja'), rumbo = $('rumbo');
-  let ang = -25, vel = 0, girando = false, t0 = performance.now();
-  $('brujula').addEventListener('click', () => {
+  // Disfraces: cada toque cambia el de la cabeza
+  const cabeza = $('cabeza');
+  const disfraces = [...cabeza.querySelectorAll('.disfraz')];
+  let i = 0;
+  cabeza.addEventListener('click', () => {
+    cabeza.classList.remove('wiggle');
+    disfraces[i].classList.remove('on'); i = (i + 1) % disfraces.length; disfraces[i].classList.add('on');
     if (navigator.vibrate) navigator.vibrate(15);
-    if (reduce) { ang = 0; pintar(); avisar(); return; }
-    vel += (Math.random() < .5 ? -1 : 1) * (900 + Math.random() * 700);
-    girando = true;
   });
-  function pintar() { aguja.style.transform = 'rotate(' + ang.toFixed(2) + 'deg)'; }
-  function avisar() {
-    rumbo.classList.add('salta');
-    setTimeout(() => rumbo.classList.remove('salta'), 260);
-  }
-  function cuadro(t) {
-    const dt = Math.min(.05, (t - t0) / 1000); t0 = t;
-    const norte = Math.round(ang / 360) * 360;
-    const temblor = girando ? 0 : Math.sin(t / 380) * 2.2 + Math.sin(t / 157) * 1.1;
-    // resorte amortiguado hacia el norte, más suave mientras gira rápido
-    const k = Math.abs(vel) > 200 ? 1.2 : 26;
-    vel += (-(ang - norte - temblor) * k - vel * (Math.abs(vel) > 200 ? .45 : 5.5)) * dt;
-    ang += vel * dt;
-    if (girando && Math.abs(vel) < 25 && Math.abs(ang - norte) < 3) { girando = false; avisar(); }
-    pintar();
-    requestAnimationFrame(cuadro);
-  }
-  pintar();
-  if (!reduce) requestAnimationFrame(cuadro);
 
-  // ----- Toast -----
+  // Calendario de papel: octubre 2026 arranca jueves, semana de lunes a domingo
+  const ns = 'http://www.w3.org/2000/svg', g = $('cal-grilla');
+  const col = (c) => 46 + c * 51.5;
+  const add = (tag, attrs, txt) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (txt) e.textContent = txt; g.appendChild(e); };
+  ['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'].forEach((d, c) => add('text', { x: col(c), y: 136, 'font-size': 15 }, d));
+  add('line', { x1: 22, x2: 378, y1: 148, y2: 148, stroke: '#3a3a3a', 'stroke-width': 1.2, opacity: .55 });
+  for (let f = 0; f < 4; f++) add('line', { x1: 22, x2: 378, y1: 198 + f * 36, y2: 198 + f * 36, stroke: '#3a3a3a', 'stroke-width': 1, opacity: .4 });
+  for (let d = 1; d <= 31; d++) { const p = d + 2; add('text', { x: col(p % 7), y: 186 + Math.floor(p / 7) * 36, 'font-size': 22 }, d); }
+
+  // Cuenta regresiva en días (hora de Argentina)
+  const ahora = Date.now();
+  const dia = (t) => new Date(t).toLocaleDateString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' });
+  const faltan = Math.round((new Date(dia(inicio)) - new Date(dia(ahora))) / 864e5);
+  $('cuenta').innerHTML = ahora > fin.getTime() ? 'Gracias por venir.'
+    : ahora >= inicio.getTime() ? '<strong>Es ahora.</strong> Vení disfrazado.'
+    : faltan === 0 ? '<strong>¡Es hoy!</strong> Nos vemos a las 21:30.'
+    : faltan === 1 ? '<strong>¡Es mañana!</strong> Andá preparando el disfraz.'
+    : 'Faltan <strong>' + faltan + ' días</strong>. Andá pensando el disfraz.';
+
   let tt;
   function toast(m) { const el = $('toast'); el.textContent = m; el.hidden = false; clearTimeout(tt); tt = setTimeout(() => el.hidden = true, 2200); }
-
-  $('btn-copiar').addEventListener('click', async () => {
-    const texto = CONFIG.mapa || CONFIG.direccion;
-    try { await navigator.clipboard.writeText(texto); toast('Ubicación copiada'); }
-    catch (e) { toast(texto); }
-  });
   $('btn-compartir').addEventListener('click', async () => {
     const url = location.href.split('#')[0];
     if (navigator.share) {
-      try { await navigator.share({ title: 'Cumple de Vicente', text: '¡Estás invitado al cumple de Vicente!', url }); } catch (e) {}
-      return;
+      try { await navigator.share({ title: 'Vicente 23 · Fiesta de disfraces', text: 'Cumplo 23 y hago una fiesta de disfraces 🎭 Sábado 31/10', url }); } catch (e) {}
+    } else {
+      try { await navigator.clipboard.writeText(url); toast('Link copiado'); } catch (e) { toast(url); }
     }
-    try { await navigator.clipboard.writeText(url); toast('Link copiado'); }
-    catch (e) { toast(url); }
-  });
-
-  // ----- Bocina: dos tonos, como una bocina de auto -----
-  let audio;
-  function bocinazo(veces = 2) {
-    try {
-      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
-      const t = audio.currentTime;
-      for (let i = 0; i < veces; i++) {
-        const ini = t + i * .22, g = audio.createGain();
-        g.gain.setValueAtTime(0, ini);
-        g.gain.linearRampToValueAtTime(.16, ini + .015);
-        g.gain.setValueAtTime(.16, ini + .15);
-        g.gain.linearRampToValueAtTime(0, ini + .18);
-        g.connect(audio.destination);
-        [370, 466].forEach((fr) => {
-          const o = audio.createOscillator();
-          o.type = 'sawtooth'; o.frequency.value = fr;
-          o.connect(g); o.start(ini); o.stop(ini + .2);
-        });
-      }
-    } catch (e) {}
-  }
-  $('bocina').addEventListener('click', () => {
-    bocinazo();
-    if (navigator.vibrate) navigator.vibrate([60, 60, 60]);
-    const b = $('bocina');
-    b.classList.remove('suena'); void b.offsetWidth; b.classList.add('suena');
-  });
-
-  // ----- Confirmación -----
-  const form = $('form'), msg = $('msg'), nombre = $('nombre');
-
-  form.addEventListener('submit', async (ev) => {
-    ev.preventDefault();
-    const valor = nombre.value.trim().replace(/\s+/g, ' ');
-    if (!valor) {
-      nombre.setAttribute('aria-invalid', 'true');
-      msg.className = 'msg error';
-      msg.textContent = 'Escribí tu nombre así sé quién viene.';
-      nombre.focus();
-      return;
-    }
-    nombre.removeAttribute('aria-invalid');
-    msg.className = 'msg';
-    msg.textContent = 'Enviando…';
-    $('enviar').disabled = true;
-
-    try {
-      if (CONFIG.scriptUrl) {
-        await fetch(CONFIG.scriptUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: new URLSearchParams({ nombre: valor.slice(0, 60), web: $('web').value })
-        });
-      } else {
-        console.warn('Modo prueba: falta CONFIG.scriptUrl, la confirmación no se guardó.');
-      }
-      mostrarListo(valor);
-    } catch (err) {
-      msg.className = 'msg error';
-      msg.textContent = 'No se pudo enviar. Revisá tu conexión y probá de nuevo.';
-    } finally {
-      $('enviar').disabled = false;
-    }
-  });
-
-  function mostrarListo(n) {
-    bocinazo(2);
-    if (navigator.vibrate) navigator.vibrate([30, 60, 30]);
-    form.hidden = true;
-    msg.textContent = '';
-    $('listo-nombre').textContent = n;
-    $('listo-texto').textContent = '¡Listo, ' + n.split(' ')[0] + '! Ya estás en la lista.';
-    const listo = $('listo');
-    listo.hidden = false;
-    listo.classList.remove('sellado'); void listo.offsetWidth; listo.classList.add('sellado');
-    listo.focus({ preventScroll: true });
-    listo.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
-  }
-
-  $('otra').addEventListener('click', () => {
-    form.reset();
-    $('listo').hidden = true;
-    form.hidden = false;
-    nombre.focus();
   });
 </script>
 </body>
