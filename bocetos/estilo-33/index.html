@@ -1,0 +1,225 @@
+<title>Cumple 23 Vicente</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Bowlby+One&family=Dela+Gothic+One&family=Archivo+Black&family=Syne:wght@600;700;800&family=Open+Sans:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  /* Layout: un teléfono con el afiche estilo "33": cabeza con gorro a la izquierda, número y datos a la derecha, calendario y autito abajo */
+  :root {
+    --mesa: #dcdad4;
+    --tinta-mesa: #24221f;
+    --gris: #6b6862;
+    --papel: #ededeb;
+    --negro: #121212;
+    --rojo: #c8241c;
+    --num: "Anton", Impact, sans-serif;
+    --geo: "Syne", system-ui, sans-serif;
+    --cal: "Open Sans", Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--mesa); color: var(--tinta-mesa); font-family: var(--geo);
+    padding-block: 28px 48px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  header { max-width: 640px; margin: 0 auto 24px; }
+  header h1 { font: 800 1.5rem/1.15 var(--geo); margin: 0 0 6px; text-wrap: balance; }
+  header p { margin: 0; color: var(--gris); max-width: 60ch; line-height: 1.5; font-weight: 600; font-size: .92rem; }
+  .tel {
+    width: 100%; max-width: 360px; margin: 0 auto; aspect-ratio: 9 / 18.5;
+    border-radius: 34px; border: 8px solid #111; overflow: hidden; position: relative;
+    box-shadow: 0 18px 40px rgba(0,0,0,.25);
+  }
+  .pantalla { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; color: var(--negro); background: var(--papel); }
+  .papel { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .afiche > *:not(.papel) { position: relative; }
+  .afiche { position: relative; padding: 18px 16px 26px; display: grid; gap: 14px; }
+
+  .arriba { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; position: relative; }
+  .cabeza { border: 0; padding: 0; background: none; cursor: pointer; display: block; width: 100%; margin-top: 6px; }
+  .cabeza svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .disfraz { opacity: 0; transition: opacity .2s; }
+  .disfraz.on { opacity: 1; }
+  .cabeza.wiggle .disfraz.on { animation: wig .9s ease-in-out 1s 2; transform-box: fill-box; transform-origin: 50% 100%; }
+  @keyframes wig { 0%,100% { transform: rotate(0); } 30% { transform: rotate(-5deg); } 65% { transform: rotate(4deg); } }
+  .pie-foto { font: 600 .62rem/1.2 var(--geo); color: #7a7a76; text-align: center; margin: 2px 0 0; }
+
+  .num { font: 400 7.6rem/.82 var(--num); letter-spacing: -.01em; margin: 6px 0 0; text-align: center; }
+  .num span { display: inline-block; transform: translateY(26px); }
+  .lema { font: 800 .98rem/1 var(--geo); text-align: center; margin: 32px 0 26px; letter-spacing: -.01em; }
+  [data-tipo="bowlby"] .num { font: 400 5.4rem/.9 "Bowlby One", sans-serif; letter-spacing: 0; }
+  [data-tipo="bowlby"] .lema { font: 400 .92rem/1.05 "Bowlby One", sans-serif; text-transform: uppercase; letter-spacing: 0; }
+  [data-tipo="dela"] .num { font: 400 5.6rem/.9 "Dela Gothic One", sans-serif; letter-spacing: 0; }
+  [data-tipo="dela"] .lema { font: 400 .95rem/1.1 "Dela Gothic One", sans-serif; letter-spacing: 0; }
+  [data-tipo="archivo"] .num { font: 400 6.3rem/.86 "Archivo Black", sans-serif; letter-spacing: -.03em; }
+  [data-tipo="archivo"] .lema { font: 400 1rem/1 "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: -.02em; }
+  [data-tipo] .num span { transform: translateY(18px); }
+  .tipos { max-width: 640px; margin: -6px auto 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .tipos > span { font: 500 .75rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gris); margin-right: 4px; }
+  .tipos button { font: 600 .85rem/1 var(--geo); padding: 8px 12px; border-radius: 99px; border: 1.5px solid var(--tinta-mesa); background: transparent; color: var(--tinta-mesa); cursor: pointer; }
+  .tipos button[aria-pressed="true"] { background: var(--tinta-mesa); color: var(--mesa); }
+  .tipos button span { font-size: 1rem; }
+  .qa { font: 600 1.06rem/1.15 var(--geo); margin: 0 0 16px; padding-left: 4px; }
+  .qa:last-child { margin-bottom: 0; }
+
+  .abajo { position: relative; height: 350px; margin-top: 4px; }
+  .cal { position: absolute; right: -4px; top: 0; width: 86%; transform: rotate(-4deg); filter: drop-shadow(0 2px 3px rgba(0,0,0,.18)); }
+  .auto { position: absolute; left: -18px; bottom: 0; width: 50%; transform: rotate(-3deg); }
+
+  .acciones { display: grid; gap: 8px; margin-top: 6px; }
+  .btn { font: 700 .92rem/1 var(--geo); padding: 14px; border-radius: 4px; border: 2px solid var(--negro); cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--negro); background: transparent; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-p { background: var(--negro); color: var(--papel); }
+  .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--rojo); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { .disfraz { transition: none; } .cabeza.wiggle .disfraz.on { animation: none; } }
+</style>
+
+<header>
+  <h1>Versión B, estilo 33</h1>
+  <p>Cambié "años de disfraces" por "fiesta de disfraces" y te dejo cuatro letras para el 23. Probalas con los botones. Tocá la cabeza para cambiar el disfraz.</p>
+</header>
+
+<div class="tipos" role="group" aria-label="Letra del 23">
+  <span>Letra del 23</span>
+  <button type="button" data-t="bowlby" aria-pressed="true"><span style="font-family:'Bowlby One'">23</span> Gorda</button>
+  <button type="button" data-t="dela" aria-pressed="false"><span style="font-family:'Dela Gothic One'">23</span> Bloque</button>
+  <button type="button" data-t="archivo" aria-pressed="false"><span style="font-family:'Archivo Black'">23</span> Grotesca</button>
+  <button type="button" data-t="" aria-pressed="false"><span style="font-family:Anton">23</span> Anterior</button>
+</div>
+
+<div class="tel"><div class="pantalla">
+
+  <div class="afiche">
+    <svg class="papel" aria-hidden="true" preserveAspectRatio="none">
+    <filter id="arrugas" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".006 .009" numOctaves="4" seed="8" result="t"/>
+      <feDiffuseLighting in="t" lighting-color="#f4f4f1" surfaceScale="3.2" result="luz"><feDistantLight azimuth="235" elevation="58"/></feDiffuseLighting>
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="2" result="grano"/>
+      <feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .08 0" result="g"/>
+      <feMerge><feMergeNode in="luz"/><feMergeNode in="g"/></feMerge>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#arrugas)"/>
+  </svg>
+    <div class="arriba">
+      <div>
+        <button class="cabeza wiggle" id="cabeza" type="button" aria-label="Cambiar el disfraz">
+          <svg viewBox="-20 -350 320 720" aria-hidden="true">
+            <defs>
+              <filter id="acuarela" x="-15%" y="-15%" width="130%" height="130%">
+                <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="4" result="t"/>
+                <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G" result="d"/>
+                <feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="11" result="manchas"/>
+                <feColorMatrix in="manchas" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -.6 0 0 0 .3" result="claro"/>
+                <feComposite in="claro" in2="d" operator="in" result="claro2"/>
+                <feMerge result="pintado"><feMergeNode in="d"/><feMergeNode in="claro2"/></feMerge>
+                <feMorphology in="d" operator="erode" radius="2.5" result="dentro"/>
+                <feComposite in="d" in2="dentro" operator="out" result="borde"/>
+                <feComponentTransfer in="borde" result="borde2"><feFuncR type="linear" slope=".55"/><feFuncG type="linear" slope=".55"/><feFuncB type="linear" slope=".55"/><feFuncA type="linear" slope=".7"/></feComponentTransfer>
+                <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="5" result="grano"/>
+                <feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.5 .55" result="grano2"/>
+                <feComposite in="grano2" in2="d" operator="in" result="grano3"/>
+                <feMerge><feMergeNode in="pintado"/><feMergeNode in="borde2"/><feMergeNode in="grano3"/></feMerge>
+              </filter>
+              <pattern id="rayas" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+                <rect width="64" height="64" fill="#f2ece4"/><rect width="64" height="34" fill="#cf3027"/>
+              </pattern>
+              <pattern id="rayas-v" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+                <rect width="56" height="56" fill="#efe9dc"/><rect width="56" height="28" fill="#2f2a52"/>
+              </pattern>
+            </defs>
+            <image href="img/cabeza.webp" x="0" y="0" width="279" height="351"/>
+            <g filter="url(#acuarela)">
+              <!-- gorrito de cumple -->
+              <g class="disfraz on" data-n="gorrito">
+                <path d="M128 -300 L16 92 C90 116 190 112 266 78 Z" fill="url(#rayas)"/>
+                <path d="M16 92 C90 116 190 112 266 78 L262 64 C190 98 92 100 20 78Z" fill="#a91d16"/>
+                <g fill="#cf3027"><circle cx="128" cy="-306" r="20"/><circle cx="110" cy="-318" r="13"/><circle cx="146" cy="-318" r="13"/><circle cx="128" cy="-332" r="12"/><circle cx="112" cy="-296" r="10"/><circle cx="145" cy="-294" r="10"/></g>
+              </g>
+              <!-- corona -->
+              <g class="disfraz" data-n="corona">
+                <path d="M14 96 L2 -40 L72 20 L138 -88 L204 20 L276 -40 L264 92 C190 72 90 72 14 96Z" fill="#e8b530"/>
+                <path d="M14 96 C90 72 190 72 264 92 L262 70 C190 52 90 52 16 74Z" fill="#c38c17"/>
+                <circle cx="138" cy="-46" r="15" fill="#c8241c"/><circle cx="74" cy="44" r="10" fill="#2552b8"/><circle cx="204" cy="44" r="10" fill="#2552b8"/>
+              </g>
+              <!-- sombrero de bruja -->
+              <g class="disfraz" data-n="bruja">
+                <path d="M150 -290 C120 -230 96 -140 82 -20 L196 -16 C194 -110 196 -200 230 -250 C196 -238 168 -262 150 -290Z" fill="#2b2541"/>
+                <path d="M84 -40 L196 -36 L198 -4 L82 -6Z" fill="url(#rayas-v)"/>
+                <ellipse cx="140" cy="20" rx="168" ry="40" fill="#231e36"/>
+              </g>
+              <!-- cuernitos -->
+              <g class="disfraz" data-n="diablo">
+                <path d="M30 92 C-6 40 -4 -40 30 -96 C40 -36 70 18 110 54Z" fill="#c8241c"/>
+                <path d="M248 88 C284 36 282 -44 248 -100 C238 -40 208 14 168 50Z" fill="#c8241c"/>
+                <path d="M10 96 C80 60 200 56 270 92" fill="none" stroke="#1d1d1d" stroke-width="14" stroke-linecap="round"/>
+              </g>
+            </g>
+          </svg>
+        </button>
+        <p class="pie-foto">tocá y cambiá el disfraz</p>
+      </div>
+      <div>
+        <div class="num">2<span>3</span></div>
+        <p class="lema">fiesta de disfraces</p>
+        <p class="qa">¿Dónde?<br>Mi casa</p>
+        <p class="qa">¿Cuándo?<br>21:30 hs</p>
+        <p class="qa">¿De qué?<br>Disfraz libre</p>
+      </div>
+    </div>
+
+    <div class="abajo">
+      <svg class="cal" viewBox="0 0 400 360" role="img" aria-label="Calendario de octubre 2026 con el sábado 31 marcado en rojo">
+        <defs>
+          <linearGradient id="hoja" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#959593"/><stop offset="1" stop-color="#7e7e7c"/></linearGradient>
+          <filter id="marcador" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="3" result="t"/>
+            <feDisplacementMap in="SourceGraphic" in2="t" scale="5" result="d"/>
+            <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="9" result="g"/>
+            <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.9" result="ga"/>
+            <feComposite in="d" in2="ga" operator="in"/>
+          </filter>
+        </defs>
+        <rect width="400" height="360" rx="4" fill="url(#hoja)"/>
+        <text x="28" y="96" font-family="Open Sans" font-weight="700" font-size="36" fill="#1c1c1c">2026</text>
+        <text x="376" y="64" font-family="Open Sans" font-weight="700" font-size="34" fill="#1c1c1c" text-anchor="end">OCTUBRE</text>
+        <g id="cal-grilla" font-family="Open Sans" font-weight="600" fill="#1f1f1f" text-anchor="middle"></g>
+        <path transform="translate(-10 6)" filter="url(#marcador)" d="M318 300 C296 284 270 294 274 318 C278 342 318 350 340 334 C360 318 352 290 322 286 C300 284 284 294 282 306 M300 298 C316 284 346 292 350 312" fill="none" stroke="#c8241c" stroke-width="11" stroke-linecap="round" opacity=".88"/>
+      </svg>
+      <img class="auto" src="img/auto-puntos.webp" alt="Vicente de chico manejando un autito de juguete">
+    </div>
+
+    <div class="acciones">
+      <a class="btn btn-p" id="wsp" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Confirmo por WhatsApp</a>
+      <div class="fila"><a class="btn" href="https://maps.app.goo.gl/QRNJ9CypNrPaN4zCA" target="_blank" rel="noopener">Cómo llegar</a><button class="btn" type="button">Agendar</button></div>
+    </div>
+  </div>
+</div></div>
+
+<script>
+  const WSP = '5493572534546';
+  const MENSAJE = '¡Vicente! Voy a tu cumple de disfraces el sábado 31 🎭';
+  document.getElementById('wsp').href = 'https://wa.me/' + WSP + '?text=' + encodeURIComponent(MENSAJE);
+
+  const cabeza = document.getElementById('cabeza');
+  const disfraces = [...cabeza.querySelectorAll('.disfraz')];
+  let i = 0;
+  cabeza.addEventListener('click', () => {
+    cabeza.classList.remove('wiggle');
+    disfraces[i].classList.remove('on'); i = (i + 1) % disfraces.length; disfraces[i].classList.add('on');
+  });
+
+  // Calendario de papel: octubre 2026 arranca jueves, semana de lunes a domingo
+  const ns = 'http://www.w3.org/2000/svg', g = document.getElementById('cal-grilla');
+  const col = (c) => 46 + c * 51.5, add = (tag, attrs, txt) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (txt) e.textContent = txt; g.appendChild(e); };
+  ['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'].forEach((d, c) => add('text', { x: col(c), y: 136, 'font-size': 15 }, d));
+  add('line', { x1: 22, x2: 378, y1: 148, y2: 148, stroke: '#3a3a3a', 'stroke-width': 1.2, opacity: .55 });
+  for (let f = 0; f < 4; f++) add('line', { x1: 22, x2: 378, y1: 198 + f * 36, y2: 198 + f * 36, stroke: '#3a3a3a', 'stroke-width': 1, opacity: .4 });
+  for (let d = 1; d <= 31; d++) { const p = d + 2; add('text', { x: col(p % 7), y: 186 + Math.floor(p / 7) * 36, 'font-size': 22 }, d); }
+  document.body.dataset.tipo = 'bowlby';
+  document.querySelectorAll('.tipos button').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.tipos button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+    if (b.dataset.t) document.body.dataset.tipo = b.dataset.t; else delete document.body.dataset.tipo;
+  }));
+</script>

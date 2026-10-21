@@ -1,0 +1,251 @@
+<title>Opciones Cumple Vicente</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Archivo+Black&family=Syne:wght@700;800&family=Courier+Prime:wght@400;700&family=Caveat+Brush&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  /* Layout: dos teléfonos lado a lado (se apilan en celular). Cada uno es un collage de una columna. */
+  :root {
+    --mesa: #dcdad4;
+    --tinta-mesa: #24221f;
+    --gris: #6b6862;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--mesa); color: var(--tinta-mesa); font-family: "Syne", system-ui, sans-serif;
+    padding-block: 28px 48px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  header { max-width: 760px; margin: 0 auto 26px; }
+  header h1 { font: 800 1.5rem/1.15 "Syne", sans-serif; margin: 0 0 6px; text-wrap: balance; }
+  header p { margin: 0; color: var(--gris); max-width: 62ch; line-height: 1.5; font-weight: 700; font-size: .92rem; }
+  .mesa { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 28px; }
+  .opcion { display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .rotulo { font: 500 .75rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gris); }
+  .rotulo b { color: var(--tinta-mesa); font-weight: 500; }
+  .nota { margin: 0; font-size: .88rem; line-height: 1.45; color: var(--gris); font-weight: 700; }
+  .tel {
+    width: 100%; max-width: 340px; margin: 0 auto; aspect-ratio: 9 / 18.5;
+    border-radius: 34px; border: 8px solid #111; overflow: hidden; position: relative;
+    box-shadow: 0 18px 40px rgba(0,0,0,.25);
+  }
+  .pantalla { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; }
+  .pantalla > * { flex-shrink: 0; }
+  .btn { font: 700 .9rem/1 "Syne", sans-serif; padding: 13px 14px; border-radius: 99px; border: 2px solid currentColor; cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-s { background: transparent; }
+  .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button:focus-visible, a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .ruido { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  .foto { position: relative; border: 0; padding: 0; background: none; cursor: pointer; display: block; width: 100%; color: inherit; }
+  .foto > svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .sticker { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.6) rotate(-8deg); transition: opacity .18s, transform .25s cubic-bezier(.3,1.6,.5,1); }
+  .sticker.on { opacity: 1; transform: none; }
+  .pista { font: 400 1.2rem/1 "Caveat Brush", cursive; text-align: center; margin: 2px 0 0; }
+
+  /* ===== A · Collage plateado ===== */
+  .a .pantalla { background-color: #8e8d87; padding: 18px 16px 22px; gap: 10px; color: #1f2a1c; }
+  .a .pantalla::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.08) 40%, transparent 43%), linear-gradient(200deg, transparent 60%, rgba(0,0,0,.06) 62%, transparent 66%); }
+  .a .arriba { font: 700 .82rem/1.2 "Courier Prime", monospace; text-align: center; letter-spacing: .02em; }
+  .a .globo { font-family: "Bagel Fat One", cursive; fill: url(#cromo); stroke: #2b2b2b; stroke-width: 2; paint-order: stroke; }
+  .a .brillo { font-family: "Bagel Fat One", cursive; fill: none; stroke: rgba(255,255,255,.75); stroke-width: 3; }
+  .a .titulo { width: 100%; height: auto; display: block; margin-top: -26px; position: relative; }
+  .a .datos { text-align: center; display: grid; gap: 6px; font-family: "Courier Prime", monospace; }
+  .a .datos .f { font-size: 1.3rem; }
+  .a .datos .l { font: 700 .78rem/1 "Syne", sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+  .a .datos .h { font-size: 1.9rem; }
+  .a .btn-p { background: #1f2a1c; color: #e9e7e0; border-color: #1f2a1c; }
+  .a .btn-s { color: #1f2a1c; }
+
+  /* ===== B · Blanco, negro y marcador ===== */
+  .b .pantalla { background-color: #efefec; padding: 18px 16px 22px; gap: 6px; color: #111; }
+  .b .pantalla::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(160deg, transparent 30%, rgba(0,0,0,.05) 31%, transparent 36%), linear-gradient(60deg, transparent 55%, rgba(0,0,0,.04) 56%, transparent 61%); }
+  .b .top { display: grid; grid-template-columns: 1.05fr 1fr; gap: 6px; align-items: start; position: relative; }
+  .b .num { font: 400 5.6rem/.8 "Archivo Black", sans-serif; letter-spacing: -.04em; margin: 4px 0 6px; }
+  .b .lema { font: 800 .82rem/1.05 "Syne", sans-serif; margin: 0 0 14px; }
+  .b .qa { font: 700 .95rem/1.15 "Syne", sans-serif; margin: 0 0 10px; }
+  .b .qa b { display: block; font-weight: 800; }
+  .b .titulo { font: 400 2.25rem/.88 "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: -.03em; margin: 2px 0 4px; position: relative; }
+  .b .titulo em { font: 400 2.6rem/1 "Caveat Brush", cursive; color: #d3241b; text-transform: none; font-style: normal; letter-spacing: 0; display: block; transform: rotate(-4deg); margin: -2px 0 -4px 6px; }
+  .b .cal-zona { position: relative; height: 330px; margin-top: 10px; }
+  .b .cal { position: absolute; right: 0; top: 0; width: 86%; transform: rotate(-4deg); }
+  .b .auto { position: absolute; left: -6px; bottom: 0; width: 50%; filter: grayscale(1) contrast(1.2); }
+  .b .btn-p { background: #111; color: #efefec; border-color: #111; }
+  .b .btn-s { color: #111; }
+
+  @media (prefers-reduced-motion: reduce) { .sticker { transition: none; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="cromo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f4f2"/><stop offset=".28" stop-color="#9c9c9a"/><stop offset=".5" stop-color="#3b3b3b"/>
+      <stop offset=".62" stop-color="#d9d9d6"/><stop offset=".8" stop-color="#6a6a68"/><stop offset="1" stop-color="#2a2a2a"/>
+    </linearGradient>
+    <filter id="pegado" x="-20%" y="-20%" width="140%" height="140%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="g"/>
+      <feFlood flood-color="#fff"/><feComposite in2="g" operator="in" result="borde"/>
+      <feGaussianBlur in="g" stdDeviation="4" result="s"/><feOffset in="s" dx="3" dy="5" result="so"/>
+      <feFlood flood-color="#000" flood-opacity=".35"/><feComposite in2="so" operator="in" result="sombra"/>
+      <feMerge><feMergeNode in="sombra"/><feMergeNode in="borde"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="rayas" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)">
+      <rect width="60" height="60" fill="#f6efe6"/><rect width="60" height="30" fill="#d3241b" opacity=".85"/>
+    </pattern>
+    <pattern id="rayas-v" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(-28)">
+      <rect width="60" height="60" fill="#e9f3d4"/><rect width="60" height="30" fill="#3f8f3a" opacity=".9"/>
+    </pattern>
+    <radialGradient id="nariz" cx=".35" cy=".3" r=".7"><stop offset="0" stop-color="#ff8a7a"/><stop offset=".4" stop-color="#e3261b"/><stop offset="1" stop-color="#8f0f09"/></radialGradient>
+    <linearGradient id="lente" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a4a3a"/><stop offset=".5" stop-color="#0d120d"/><stop offset="1" stop-color="#2f3a2f"/></linearGradient>
+    <linearGradient id="oro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1a8"/><stop offset=".45" stop-color="#e2b23a"/><stop offset="1" stop-color="#8d6410"/></linearGradient>
+
+    <!-- stickers, en coordenadas de la foto (585 × 639) -->
+    <g id="s-gorrito">
+      <path d="M318 -230 L200 52 C260 68 360 62 420 30 Z" fill="url(#rayas-v)"/>
+      <path d="M318 -230 L200 52 C260 68 360 62 420 30 Z" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="3"/>
+      <g fill="#f2f2e8"><circle cx="318" cy="-232" r="20"/><circle cx="300" cy="-240" r="11"/><circle cx="336" cy="-242" r="12"/><circle cx="320" cy="-252" r="11"/></g>
+    </g>
+    <g id="s-gorrito-rojo">
+      <path d="M318 -230 L200 52 C260 68 360 62 420 30 Z" fill="url(#rayas)"/>
+      <path d="M200 52 C260 68 360 62 420 30" fill="none" stroke="#b81c14" stroke-width="10" stroke-linecap="round"/>
+      <g fill="#d3241b"><circle cx="318" cy="-232" r="20"/><circle cx="300" cy="-242" r="12"/><circle cx="336" cy="-242" r="12"/><circle cx="318" cy="-254" r="11"/></g>
+    </g>
+    <g id="s-anteojos">
+      <path d="M168 182 C180 166 262 160 278 178 C284 196 276 236 236 240 C196 242 172 226 168 200Z" fill="url(#lente)"/>
+      <path d="M296 176 C312 158 394 156 404 172 C410 192 400 230 362 234 C322 238 298 220 296 196Z" fill="url(#lente)"/>
+      <path d="M160 186 C200 164 250 160 280 176 C290 170 296 170 296 172 C330 156 390 152 414 168" fill="none" stroke="#0b0b0b" stroke-width="9" stroke-linecap="round"/>
+      <path d="M190 186 l30 -8 M318 180 l30 -9" stroke="rgba(255,255,255,.55)" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <g id="s-bigote">
+      <path d="M287 252 C266 236 226 238 208 270 C230 260 254 270 287 264 C320 270 344 260 366 270 C348 238 308 236 287 252Z" fill="#2a1a10"/>
+    </g>
+    <g id="s-nariz"><circle cx="288" cy="236" r="27" fill="url(#nariz)"/><ellipse cx="279" cy="226" rx="8" ry="5" fill="rgba(255,255,255,.7)"/></g>
+    <g id="s-corona">
+      <path d="M190 40 L176 -64 L240 -6 L300 -96 L360 -8 L424 -62 L412 40 C340 22 260 22 190 40Z" fill="url(#oro)" stroke="#7a560c" stroke-width="4"/>
+      <circle cx="300" cy="-30" r="14" fill="#c0262b"/><circle cx="236" cy="16" r="9" fill="#2a58c9"/><circle cx="364" cy="16" r="9" fill="#2a58c9"/>
+    </g>
+  </defs>
+</svg>
+
+<header>
+  <h1>Dos opciones con tu foto de la gorra</h1>
+  <p>Elegí yo, como pediste. Las dos son collage con objetos pegados tipo sticker, como las invitaciones del 27 y del 33. Tocá la foto en cada una. La versión anterior (tinta azul o roja) sigue guardada y es la opción 3.</p>
+</header>
+
+<main class="mesa">
+  <!-- A -->
+  <section class="opcion">
+    <div class="rotulo"><b>A</b> · Collage plateado</div>
+    <div class="tel a"><div class="pantalla ruido">
+      <div class="arriba">Cumplo 23 y hago una</div>
+      <button class="foto" id="foto-a" type="button" aria-label="Pegarle stickers a la foto">
+        <svg viewBox="-60 -270 705 920" aria-hidden="true">
+          <text class="globo" x="-70" y="330" font-size="420">2</text>
+          <text class="globo" x="375" y="330" font-size="420">3</text>
+          <text class="brillo" x="-55" y="300" font-size="420" style="stroke-dasharray:40 900">2</text>
+          <text class="brillo" x="390" y="300" font-size="420" style="stroke-dasharray:40 900">3</text>
+          <image href="img/gorra.webp" x="0" y="0" width="585" height="639"/>
+          <g filter="url(#pegado)">
+            <use class="sticker" href="#s-gorrito"/>
+            <use class="sticker" href="#s-anteojos"/>
+            <use class="sticker" href="#s-bigote"/>
+            <use class="sticker" href="#s-nariz"/>
+          </g>
+        </svg>
+      </button>
+      <svg class="titulo" viewBox="0 0 600 230" role="img" aria-label="Fiesta de disfraces">
+        <text class="globo" x="300" y="95" font-size="104" text-anchor="middle">FIESTA DE</text>
+        <text class="globo" x="300" y="210" font-size="116" text-anchor="middle">DISFRACES</text>
+      </svg>
+      <p class="pista">tocá la foto y pegame stickers</p>
+      <div class="datos">
+        <div class="f">Sábado 31 de octubre</div>
+        <div class="l">Mi casa · Pilar</div>
+        <div class="h">21:30hs</div>
+      </div>
+      <a class="btn btn-p wsp" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wsp"/></svg>Confirmo por WhatsApp</a>
+      <div class="fila"><a class="btn btn-s" href="https://maps.app.goo.gl/QRNJ9CypNrPaN4zCA" target="_blank" rel="noopener">Cómo llegar</a><button class="btn btn-s" type="button">Agendar</button></div>
+    </div></div>
+    <p class="nota">Gris con globos plateados, como la del 27. Cada toque te pega un sticker más: gorrito, anteojos, bigote, nariz de payaso. Al quinto toque se limpia.</p>
+  </section>
+
+  <!-- B -->
+  <section class="opcion">
+    <div class="rotulo"><b>B</b> · Blanco, negro y marcador</div>
+    <div class="tel b"><div class="pantalla ruido">
+      <div class="top">
+        <button class="foto" id="foto-b" type="button" aria-label="Cambiarle el disfraz a la foto">
+          <svg viewBox="-20 -270 625 920" aria-hidden="true">
+            <image href="img/gorra-bn.webp" x="0" y="0" width="585" height="639"/>
+            <g filter="url(#pegado)">
+              <use class="sticker on" href="#s-gorrito-rojo"/>
+              <use class="sticker" href="#s-corona"/>
+              <use class="sticker" href="#s-anteojos"/>
+              <use class="sticker" href="#s-nariz"/>
+            </g>
+          </svg>
+        </button>
+        <div>
+          <div class="num">23</div>
+          <p class="lema">años y me sigo disfrazando</p>
+          <p class="qa"><b>¿Dónde?</b>Mi casa</p>
+          <p class="qa"><b>¿Cuándo?</b>21:30</p>
+        </div>
+      </div>
+      <p class="pista" style="text-align:left;margin-left:8px">↑ tocame</p>
+      <h2 class="titulo">Fiesta de disfraces<em>disfraz libre</em></h2>
+      <div class="cal-zona">
+        <svg class="cal" viewBox="0 0 400 330" role="img" aria-label="Calendario de octubre 2026 con el sábado 31 marcado en rojo">
+          <rect x="0" y="0" width="400" height="330" rx="6" fill="#8a8a88"/>
+          <text x="22" y="62" font-family="Archivo Black" font-size="34" fill="#1d1d1d">2026</text>
+          <text x="378" y="50" font-family="Archivo Black" font-size="34" fill="#1d1d1d" text-anchor="end">OCTUBRE</text>
+          <g font-family="Syne" font-weight="800" font-size="15" fill="#1d1d1d" text-anchor="middle" id="cal-dias"></g>
+          <path d="M312 262 C294 246 268 256 272 282 C276 306 318 312 334 294 C348 276 338 252 308 250 C294 250 282 256 278 266" fill="none" stroke="#d3241b" stroke-width="9" stroke-linecap="round" opacity=".9"/>
+        </svg>
+        <img class="auto" src="img/auto.webp" alt="Vicente de chico manejando un autito de juguete">
+      </div>
+      <a class="btn btn-p wsp" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wsp"/></svg>Confirmo por WhatsApp</a>
+      <div class="fila" style="margin-top:8px"><a class="btn btn-s" href="https://maps.app.goo.gl/QRNJ9CypNrPaN4zCA" target="_blank" rel="noopener">Cómo llegar</a><button class="btn btn-s" type="button">Agendar</button></div>
+    </div></div>
+    <p class="nota">Papel blanco arrugado, foto en blanco y negro, un "23" enorme y marcador rojo, como la del 33. Calendario de octubre con el 31 marcado y el autito abajo. Tocás la foto y cambia el disfraz.</p>
+  </section>
+</main>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ico-wsp" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></symbol></svg>
+
+<script>
+  const WSP = '5493572534546';
+  const MENSAJE = '¡Vicente! Voy a tu cumple de disfraces el sábado 31 🎭';
+  document.querySelectorAll('.wsp').forEach((a) => a.href = 'https://wa.me/' + WSP + '?text=' + encodeURIComponent(MENSAJE));
+
+  // A: cada toque pega un sticker más; después se limpia
+  const sa = [...document.querySelectorAll('#foto-a .sticker')];
+  let na = 0;
+  document.getElementById('foto-a').addEventListener('click', () => {
+    if (na === sa.length) { sa.forEach((s) => s.classList.remove('on')); na = 0; return; }
+    sa[na++].classList.add('on');
+  });
+
+  // B: cada toque cambia el disfraz
+  const sb = [...document.querySelectorAll('#foto-b .sticker')];
+  let nb = 0;
+  document.getElementById('foto-b').addEventListener('click', () => {
+    sb[nb].classList.remove('on'); nb = (nb + 1) % sb.length; sb[nb].classList.add('on');
+  });
+
+  // Calendario: octubre 2026 arranca jueves
+  const g = document.getElementById('cal-dias');
+  const ns = 'http://www.w3.org/2000/svg';
+  ['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'].forEach((d, i) => {
+    const t = document.createElementNS(ns, 'text'); t.setAttribute('x', 40 + i * 53); t.setAttribute('y', 100); t.setAttribute('font-size', 12); t.textContent = d; g.appendChild(t);
+  });
+  for (let d = 1; d <= 31; d++) {
+    const pos = d + 2, col = pos % 7, fila = Math.floor(pos / 7);
+    const t = document.createElementNS(ns, 'text');
+    t.setAttribute('x', 40 + col * 53); t.setAttribute('y', 138 + fila * 36); t.textContent = d; g.appendChild(t);
+  }
+</script>
