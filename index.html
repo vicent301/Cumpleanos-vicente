@@ -18,7 +18,7 @@
 <link rel="preload" as="image" href="assets/cabeza.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&family=Syne:wght@600;700;800&family=Open+Sans:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&family=Syne:wght@600;700;800&family=Open+Sans:wght@600;700&family=Space+Mono:wght@700&display=swap">
 <style>
   :root {
     --papel: #e6e5e1;
@@ -52,11 +52,15 @@
   @keyframes wig { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-5deg); } 65% { transform: rotate(4deg); } }
   .pie-foto { font: 600 .68rem/1.2 var(--geo); color: var(--gris); text-align: center; margin: 2px 0 0; }
 
-  h1 { font: 800 1.7rem/1 var(--geo); text-align: center; margin: 2px 0 0; letter-spacing: -.02em; }
+  /* Título en cintas de etiquetadora */
+  h1 { font: 700 1.6rem/1 "Space Mono", monospace; letter-spacing: .06em; text-transform: uppercase; text-align: center; margin: 4px 0 2px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .cinta { display: inline-block; background: #161616; color: #f1f1ee; padding: 9px 14px 8px; border-radius: 2px; box-shadow: 0 2px 3px #0004, inset 0 1px 0 #fff2; text-shadow: 0 -1px 0 #000, 0 1px 0 #ffffff40; }
+  .cinta:nth-child(3) { transform: rotate(-2deg); background: var(--rojo); }
+  .cinta:nth-child(4) { transform: rotate(1.5deg); }
   .qas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
   .qas div { text-align: center; }
-  .qas dt { font: 600 1rem/1.2 var(--geo); }
-  .qas dd { margin: 0; font: 600 1rem/1.2 var(--geo); }
+  .qas dt { font: 700 .8rem/1.3 "Space Mono", monospace; text-transform: uppercase; }
+  .qas dd { margin: 0; font: 700 1rem/1.2 "Space Mono", monospace; }
 
   /* Calendario de papel y autito */
   .abajo { position: relative; height: 0; padding-bottom: 92%; margin-top: 4px; }
@@ -165,7 +169,7 @@
   </div>
   <p class="pie-foto">tocá y cambiá el disfraz</p>
 
-  <h1><span class="sr">Cumplo 23 y hago una </span>Fiesta de disfraces</h1>
+  <h1><span class="sr">Cumplo 23 y hago una </span><span class="cinta">Fiesta</span><span class="cinta">de</span><span class="cinta">disfraces</span></h1>
   <dl class="qas">
     <div><dt>¿Dónde?</dt><dd>Mi casa</dd></div>
     <div><dt>¿Cuándo?</dt><dd>21:30 hs</dd></div>
@@ -221,7 +225,7 @@
     fecha: '2026-10-31T21:30:00-03:00',
     horas: 5,                                    // duración para el calendario
     lugar: 'Casa de Vicente, Pilar, Córdoba',
-    mapa: 'https://maps.app.goo.gl/QRNJ9CypNrPaN4zCA',
+    mapa: 'https://maps.app.goo.gl/r1agEd2edMjcGBZU9',
     whatsapp: '5493572534546',                   // con código de país, sin +
     mensaje: '¡Vicente! Voy a tu cumple de disfraces el sábado 31 🎭'
   };

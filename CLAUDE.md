@@ -29,7 +29,7 @@ Una invitación web de cumpleaños que Vicente comparte por WhatsApp. Sus amigos
 
 ## Datos del cumple (ya en `CONFIG`)
 - Sábado 31/10/2026, 21:30 hs (coincide con Halloween). Cumple 23.
-- Casa de Vicente, X5972 Pilar, Córdoba. Maps: https://maps.app.goo.gl/QRNJ9CypNrPaN4zCA
+- Casa de Vicente, X5972 Pilar, Córdoba. Maps: https://maps.app.goo.gl/r1agEd2edMjcGBZU9
 - Fiesta de disfraces, **disfraz libre**.
 
 ## Pendiente de Vicente
@@ -55,4 +55,5 @@ Una invitación web de cumpleaños que Vicente comparte por WhatsApp. Sus amigos
 - [ ] **Versión actual (B copiando el afiche "33"), `bocetos/estilo-33/`:** le gustó la idea de B pero pidió copiar más fiel las referencias. Papel blanco arrugado, cabeza sola recortada en B/N con gorrito de acuarela (tocar cambia: gorrito, corona, bruja, diablo), "23" en Anton, "años de disfraces" + ¿Dónde?/¿Cuándo?/¿De qué? en Syne, calendario de papel (Open Sans) con el 31 marcado con marcador rojo, autito en semitono. No le gustaron los disfraces dibujados planos ni el calendario plano anterior.
 - [ ] **Imagen hecha con otra IA (21/10/2026)** (`Descargas/Invitación de Cumpleaños Disco de Vicente 23.png`): collage beige con lentejuelas plateadas, bolas de disco azules, "Vicente" en letras recortadas tipo nota de rescate, "23" en globos plateados, su foto de chico con la gorra y gorrito de cumple azul brillante, "HAPPY BIRTHDAY" en letras recortadas, globos azules y plateados, "Fiesta de disfraces" en pincel azul. **Es para los que van más tarde, NO reemplaza la invitación web.** Le encantó: tomarla como referencia fuerte de estilo. Una página armada con esa imagen + botones quedó en `bocetos/imagen-ia/` por si sirve. Ojo: dice "Mi cada" y tiene logos reales.
 - [~] ~~Conectar la URL del script~~: ya no hace falta si se confirma por WhatsApp (`Code.gs` quedaría sin uso).
+- [ ] **Opciones de fuentes (21/10/2026):** `bocetos/fuentes/` (y https://claude.ai/artifact/Guags5mD6w87s5S8vV8y3Y) muestra la invitación publicada con 7 combinaciones sacadas de sus referencias: A actual, B afiche 33 (Anton), C pincel (Permanent Marker + Kalam), D máquina + birome (Courier Prime + Kalam rojo), E letras recortadas, F grotesk + tablita (Archivo Black + Nanum Pen), G serif (DM Serif Display), H boliche (Bebas Neue + Space Mono), I nota roja (Caveat), J brocha (Caveat Brush), K etiquetadora (cintas Space Mono), L ancha retro (Unbounded), M máquina gastada (Special Elite), N recortes B/N. **El 23 queda en crayón como el actual en todas** (pedido de Vicente). **Le gustaron K y L.** Mezclas agregadas: O cintas con letra ancha, P título ancho + ¿Dónde?/¿Cuándo?/¿De qué? en cinta, Q cinta "Cumplo 23 y hago una" arriba + título ancho, R cintas + etiquetas anchas. **Eligió K con el título más grande (1.6rem): ya está en `index.html`.** Mapa cambiado a https://maps.app.goo.gl/r1agEd2edMjcGBZU9.
 - [x] GitHub Pages activado (21/10/2026): https://vicent301.github.io/Cumpleanos-vicente/

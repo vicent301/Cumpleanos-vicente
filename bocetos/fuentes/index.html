@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Opciones de fuentes</title>
+<meta name="description" content="Cumplo 23 y hago una fiesta de disfraces. Sábado 31 de octubre, 21:30 hs, en mi casa. Confirmá por WhatsApp.">
+<meta name="theme-color" content="#e6e5e1">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:title" content="Vicente 23 · Fiesta de disfraces">
+<meta property="og:description" content="Sábado 31 de octubre, 21:30 hs, en mi casa. Disfraz libre.">
+<meta property="og:url" content="https://vicent301.github.io/Cumpleanos-vicente/">
+<meta property="og:image" content="https://vicent301.github.io/Cumpleanos-vicente/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="../../assets/cabeza.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&family=Syne:wght@600;700;800&family=Open+Sans:wght@600;700&family=Anton&family=Permanent+Marker&family=Kalam:wght@700&family=Courier+Prime:wght@400;700&family=Archivo+Black&family=Nanum+Pen+Script&family=DM+Serif+Display&family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Caveat:wght@700&family=Caveat+Brush&family=Unbounded:wght@800;900&family=Special+Elite&display=swap">
+<style>
+  :root {
+    --papel: #e6e5e1;
+    --negro: #121212;
+    --gris: #6f6e6a;
+    --rojo: #c8241c;
+    --geo: "Syne", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--negro); font-family: var(--geo);
+    background: var(--papel) url("../../assets/papel.webp") center top / 760px auto repeat;
+  }
+  main {
+    max-width: 440px; margin: 0 auto; display: grid; gap: 16px;
+    padding-top: calc(18px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+    padding-left: max(18px, env(safe-area-inset-left, 0px));
+    padding-right: max(18px, env(safe-area-inset-right, 0px));
+  }
+
+  /* Cabeza con disfraz delante del 23 de crayón */
+  .hero { position: relative; padding-bottom: 24%; }
+  .num { position: absolute; left: -4%; top: 34%; width: 108%; height: auto; display: block; }
+  .cabeza { position: relative; border: 0; padding: 0; background: none; cursor: pointer; display: block; width: 40%; margin: 0 auto; -webkit-tap-highlight-color: transparent; }
+  .cabeza svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .disfraz { opacity: 0; transition: opacity .2s; }
+  .disfraz.on { opacity: 1; }
+  .cabeza.wiggle .disfraz.on { animation: wig .9s ease-in-out 1.2s 2; transform-box: fill-box; transform-origin: 50% 100%; }
+  @keyframes wig { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-5deg); } 65% { transform: rotate(4deg); } }
+  .pie-foto { font: 600 .68rem/1.2 var(--geo); color: var(--gris); text-align: center; margin: 2px 0 0; }
+
+  h1 { font: 800 1.7rem/1 var(--geo); text-align: center; margin: 2px 0 0; letter-spacing: -.02em; }
+  .qas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
+  .qas div { text-align: center; }
+  .qas dt { font: 600 1rem/1.2 var(--geo); }
+  .qas dd { margin: 0; font: 600 1rem/1.2 var(--geo); }
+
+  /* Calendario de papel y autito */
+  .abajo { position: relative; height: 0; padding-bottom: 92%; margin-top: 4px; }
+  .cal { position: absolute; right: -4px; top: 0; width: 86%; height: auto; transform: rotate(-4deg); filter: drop-shadow(0 2px 3px rgba(0,0,0,.18)); }
+  .auto { position: absolute; left: -18px; bottom: 0; width: 50%; height: auto; transform: rotate(-3deg); }
+  .cuenta { text-align: center; font: 600 .95rem/1.3 var(--geo); margin: 0; }
+  .cuenta strong { color: var(--rojo); font-weight: 800; }
+
+  .acciones { display: grid; gap: 10px; margin-top: 4px; }
+  .btn {
+    font: 700 .95rem/1 var(--geo); padding: 16px 12px; border-radius: 4px; border: 2px solid var(--negro);
+    cursor: pointer; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 9px;
+    color: var(--negro); background: transparent; -webkit-tap-highlight-color: transparent; transition: transform .12s;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn svg { width: 21px; height: 21px; flex: none; }
+  .btn-wsp { background: var(--negro); color: #f3f2ee; font-size: 1rem; padding: 19px 12px; }
+  .fila .btn { font-size: .9rem; padding: 15px 8px; gap: 7px; }
+  .fila .btn svg { width: 19px; height: 19px; }
+  .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .btn:focus-visible, .cabeza:focus-visible { outline: 3px solid var(--rojo); outline-offset: 3px; }
+  .pie { text-align: center; font: 600 .75rem/1.4 var(--geo); color: var(--gris); margin: 6px 0 0; }
+  .toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--negro); color: #fff; font: 600 .9rem/1 var(--geo); padding: 12px 16px; border-radius: 99px; }
+  [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .disfraz, .btn { transition: none; }
+    .cabeza.wiggle .disfraz.on { animation: none; }
+  }
+
+  /* ===== Selector de fuentes (boceto) ===== */
+  .selector { position: sticky; top: 0; z-index: 5; background: rgba(230,229,225,.94); backdrop-filter: blur(6px); border-bottom: 1px solid #0002; padding: 10px 0 8px; }
+  .chips { display: flex; gap: 6px; overflow-x: auto; padding: 0 16px; scrollbar-width: none; }
+  .chips button { flex: none; font: 700 .8rem/1 "Syne", sans-serif; padding: 9px 12px; border-radius: 99px; border: 2px solid var(--negro); background: transparent; color: var(--negro); cursor: pointer; }
+  .chips button[aria-pressed="true"] { background: var(--negro); color: #f3f2ee; }
+  .ref { font: 600 .72rem/1.3 "Syne", sans-serif; color: var(--gris); margin: 7px 16px 0; text-align: center; }
+
+  /* B · Afiche 33: número macizo angosto */
+  [data-f="s33"] h1 { font-size: 1.55rem; text-transform: lowercase; letter-spacing: -.01em; }
+
+  /* C · Pincel (30 azul, Stay Curious) */
+  [data-f="pincel"] h1 { font: 400 2.1rem/1 "Permanent Marker", cursive; letter-spacing: 0; transform: rotate(-2deg); }
+  [data-f="pincel"] .qas dt { font: 400 1.05rem/1.2 "Permanent Marker", cursive; }
+  [data-f="pincel"] .qas dd { font: 700 1.25rem/1.15 Kalam, cursive; }
+
+  /* D · Máquina de escribir + birome (tequila, "31 Octubre" de la IA) */
+  [data-f="maquina"] { --geo: "Courier Prime", monospace; }
+  [data-f="maquina"] h1 { font: 700 1.85rem/1 "Courier Prime", monospace; letter-spacing: -.03em; }
+  [data-f="maquina"] .qas dt { font: 700 .95rem/1.2 "Courier Prime", monospace; }
+  [data-f="maquina"] .qas dd { font: 700 1.35rem/1.1 Kalam, cursive; color: var(--rojo); transform: rotate(-3deg); }
+
+  /* E · Letras recortadas (imagen de la IA) */
+  [data-f="recortes"] h1 { font: 400 1.65rem/1.25 sans-serif; letter-spacing: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 1px; }
+  .rec { display: inline-block; padding: 1px 4px 0; box-shadow: 0 1px 2px #0003; }
+  .rec.esp { width: 10px; box-shadow: none; }
+  [data-f="recortes"] .qas dt { font: 700 .95rem/1.2 "Courier Prime", monospace; }
+  [data-f="recortes"] .qas dd { font: 700 1.3rem/1.1 Kalam, cursive; }
+
+  /* F · Grotesk pesado + tablita a mano (Victoria, House Party) */
+  [data-f="grotesk"] h1 { font: 400 2.05rem/.95 "Archivo Black", sans-serif; text-transform: uppercase; letter-spacing: -.04em; }
+  [data-f="grotesk"] .qas { border: 2px solid var(--negro); gap: 0; }
+  [data-f="grotesk"] .qas div { padding: 8px 4px 6px; }
+  [data-f="grotesk"] .qas div + div { border-left: 2px solid var(--negro); }
+  [data-f="grotesk"] .qas dt { font: 400 .72rem/1.2 "Archivo Black", sans-serif; text-transform: uppercase; }
+  [data-f="grotesk"] .qas dd { font: 400 1.75rem/1 "Nanum Pen Script", cursive; }
+
+  /* G · Serif (el 22 rojo) */
+  [data-f="serif"] h1 { font: 400 2.15rem/1 "DM Serif Display", serif; letter-spacing: -.01em; }
+  [data-f="serif"] .qas dt { font: 400 1.1rem/1.2 "DM Serif Display", serif; }
+
+  /* H · Afiche de boliche (Classico, Saturday nights) */
+  [data-f="boliche"] h1 { font: 400 3rem/.9 "Bebas Neue", sans-serif; letter-spacing: .01em; }
+  [data-f="boliche"] .qas dt { font: 700 .78rem/1.3 "Space Mono", monospace; text-transform: uppercase; }
+  [data-f="boliche"] .qas dd { font: 400 1.6rem/1 "Bebas Neue", sans-serif; letter-spacing: .02em; }
+
+  /* I · Nota en birome roja ("NOTE: don't forget...") */
+  [data-f="nota"] h1 { font: 700 2.5rem/.95 Caveat, cursive; color: var(--rojo); transform: rotate(-3deg); letter-spacing: 0; }
+  [data-f="nota"] .qas dt { font: 700 .9rem/1.3 "Courier Prime", monospace; }
+  [data-f="nota"] .qas dd { font: 700 1.55rem/1 Caveat, cursive; color: var(--rojo); }
+
+  /* J · Pincel suave ("Fiesta de disfraces" de la IA) */
+  [data-f="brocha"] h1 { font: 400 2.3rem/1 "Caveat Brush", cursive; letter-spacing: 0; transform: rotate(-2deg); }
+  [data-f="brocha"] .qas dt { font: 700 .95rem/1.2 "Courier Prime", monospace; }
+  [data-f="brocha"] .qas dd { font: 400 1.4rem/1.05 "Caveat Brush", cursive; }
+
+  /* K · Etiquetadora (cinta negra con letras en relieve) */
+  [data-f="dymo"] h1 { font: 700 1.25rem/1 "Space Mono", monospace; letter-spacing: .06em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .cinta { display: inline-block; background: #161616; color: #f1f1ee; padding: 8px 12px 7px; border-radius: 2px; box-shadow: 0 2px 3px #0004, inset 0 1px 0 #fff2; text-shadow: 0 -1px 0 #000, 0 1px 0 #ffffff40; }
+  .cinta:nth-child(2) { transform: rotate(-2deg); } .cinta:nth-child(3) { transform: rotate(1.5deg); background: var(--rojo); }
+  [data-f="dymo"] .qas dt { font: 700 .8rem/1.3 "Space Mono", monospace; text-transform: uppercase; }
+  [data-f="dymo"] .qas dd { font: 700 1rem/1.2 "Space Mono", monospace; }
+
+  /* L · Ancha retro ("years of awesomness") */
+  [data-f="ancha"] h1 { font: 900 1.45rem/1.05 Unbounded, sans-serif; text-transform: uppercase; letter-spacing: -.02em; }
+  [data-f="ancha"] .qas dt { font: 800 .72rem/1.3 Unbounded, sans-serif; text-transform: uppercase; }
+  [data-f="ancha"] .qas dd { font: 600 1rem/1.2 Syne, sans-serif; }
+
+  /* M · Máquina gastada (sello, tinta corrida) */
+  [data-f="gastada"] { --geo: "Special Elite", monospace; }
+  [data-f="gastada"] h1 { font: 400 2rem/1 "Special Elite", monospace; letter-spacing: -.02em; }
+  [data-f="gastada"] .qas dt, [data-f="gastada"] .qas dd { font: 400 1rem/1.25 "Special Elite", monospace; }
+  [data-f="gastada"] .qas dd { font-size: 1.15rem; }
+
+  /* N · Recortes de diario en blanco, negro y rojo */
+  [data-f="diario"] h1 { font: 400 1.65rem/1.25 sans-serif; letter-spacing: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 1px; }
+  [data-f="diario"] .qas dt { font: 700 .95rem/1.2 "Courier Prime", monospace; }
+  [data-f="diario"] .qas dd { font: 400 1.1rem/1.2 "DM Serif Display", serif; }
+
+  /* ===== Mezclas de K (etiquetadora) y L (ancha retro) ===== */
+  .cinta.chica { font: 700 .72rem/1 "Space Mono", monospace; letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px 5px; }
+
+  /* O · Cintas con letra ancha */
+  [data-f="o"] h1 { font: 900 1.2rem/1 Unbounded, sans-serif; letter-spacing: .02em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  [data-f="o"] .qas dt { font: 800 .72rem/1.3 Unbounded, sans-serif; text-transform: uppercase; }
+  [data-f="o"] .qas dd { font: 700 1rem/1.2 "Space Mono", monospace; }
+
+  /* P · Título ancho + datos con cinta */
+  [data-f="p"] h1 { font: 900 1.45rem/1.05 Unbounded, sans-serif; text-transform: uppercase; letter-spacing: -.02em; }
+  [data-f="p"] .qas dt { margin-bottom: 6px; }
+  [data-f="p"] .qas dd { font: 700 1rem/1.2 "Space Mono", monospace; }
+
+  /* Q · Cinta arriba + título ancho */
+  [data-f="q"] h1 { font: 900 1.45rem/1.05 Unbounded, sans-serif; text-transform: uppercase; letter-spacing: -.02em; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  [data-f="q"] h1 .cinta { transform: rotate(-2deg); }
+  [data-f="q"] .qas dt { font: 800 .72rem/1.3 Unbounded, sans-serif; text-transform: uppercase; }
+  [data-f="q"] .qas dd { font: 700 1rem/1.2 "Space Mono", monospace; }
+
+  /* R · Cintas + etiquetas anchas */
+  [data-f="r"] h1 { font: 700 1.25rem/1 "Space Mono", monospace; letter-spacing: .06em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  [data-f="r"] .qas dt { font: 800 .72rem/1.3 Unbounded, sans-serif; text-transform: uppercase; }
+  [data-f="r"] .qas dd { font: 600 1rem/1.2 Syne, sans-serif; }
+</style>
+</head>
+<body>
+<div class="selector">
+  <div class="chips" id="chips">
+    <button type="button" data-f="actual">A · Actual</button>
+    <button type="button" data-f="s33">B · Afiche 33</button>
+    <button type="button" data-f="pincel">C · Pincel</button>
+    <button type="button" data-f="maquina">D · Máquina + birome</button>
+    <button type="button" data-f="recortes">E · Recortes</button>
+    <button type="button" data-f="grotesk">F · Grotesk + tablita</button>
+    <button type="button" data-f="serif">G · Serif</button>
+    <button type="button" data-f="boliche">H · Boliche</button>
+    <button type="button" data-f="nota">I · Nota roja</button>
+    <button type="button" data-f="brocha">J · Brocha</button>
+    <button type="button" data-f="dymo">K · Etiquetadora</button>
+    <button type="button" data-f="ancha">L · Ancha retro</button>
+    <button type="button" data-f="gastada">M · Máquina gastada</button>
+    <button type="button" data-f="diario">N · Recortes B/N</button>
+    <button type="button" data-f="o">O · Cintas anchas</button>
+    <button type="button" data-f="p">P · Ancha + datos en cinta</button>
+    <button type="button" data-f="q">Q · Cinta arriba + ancha</button>
+    <button type="button" data-f="r">R · Cintas + etiquetas anchas</button>
+  </div>
+  <p class="ref" id="ref"></p>
+</div>
+<main>
+  <div class="hero">
+    <svg class="num" viewBox="0 0 560 420" aria-hidden="true">
+      <defs>
+        <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="6" result="w"/>
+          <feDisplacementMap in="SourceGraphic" in2="w" scale="5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+          <feTurbulence type="fractalNoise" baseFrequency=".07 .9" numOctaves="2" seed="3" result="vetas"/>
+          <feColorMatrix in="vetas" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.55" result="m1"/>
+          <feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="1" seed="9" result="grano"/>
+          <feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -4 3.15" result="m2"/>
+          <feComposite in="m1" in2="m2" operator="in" result="m"/>
+          <feComposite in="d" in2="m" operator="in"/>
+        </filter>
+      </defs>
+      <g font-family="Rubik, 'Arial Black', sans-serif" font-weight="900" font-size="440">
+        <g fill="none" stroke="#f6f5f1" stroke-width="16" stroke-linejoin="round"><text x="0" y="400">2</text><text x="560" y="400" text-anchor="end">3</text></g>
+        <g fill="#141414" filter="url(#crayon)"><text x="0" y="400">2</text><text x="560" y="400" text-anchor="end">3</text></g>
+      </g>
+    </svg>
+    <button class="cabeza wiggle" id="cabeza" type="button" aria-label="Cambiarle el disfraz a Vicente">
+      <svg viewBox="-20 -350 320 720" aria-hidden="true">
+        <defs>
+          <filter id="acuarela" x="-15%" y="-15%" width="130%" height="130%">
+            <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="4" result="t"/>
+            <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G" result="d"/>
+            <feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="11" result="manchas"/>
+            <feColorMatrix in="manchas" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -.6 0 0 0 .3" result="claro"/>
+            <feComposite in="claro" in2="d" operator="in" result="claro2"/>
+            <feMerge result="pintado"><feMergeNode in="d"/><feMergeNode in="claro2"/></feMerge>
+            <feMorphology in="d" operator="erode" radius="2.5" result="dentro"/>
+            <feComposite in="d" in2="dentro" operator="out" result="borde"/>
+            <feComponentTransfer in="borde" result="borde2"><feFuncR type="linear" slope=".55"/><feFuncG type="linear" slope=".55"/><feFuncB type="linear" slope=".55"/><feFuncA type="linear" slope=".7"/></feComponentTransfer>
+            <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="5" result="grano"/>
+            <feColorMatrix in="grano" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.5 .55" result="grano2"/>
+            <feComposite in="grano2" in2="d" operator="in" result="grano3"/>
+            <feMerge><feMergeNode in="pintado"/><feMergeNode in="borde2"/><feMergeNode in="grano3"/></feMerge>
+          </filter>
+          <pattern id="rayas" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+            <rect width="64" height="64" fill="#f2ece4"/><rect width="64" height="34" fill="#cf3027"/>
+          </pattern>
+          <pattern id="rayas-v" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+            <rect width="56" height="56" fill="#efe9dc"/><rect width="56" height="28" fill="#2f2a52"/>
+          </pattern>
+        </defs>
+        <image href="../../assets/cabeza.webp" x="0" y="0" width="279" height="351"/>
+        <g filter="url(#acuarela)">
+          <!-- gorrito de cumple -->
+          <g class="disfraz on">
+            <path d="M128 -300 L16 92 C90 116 190 112 266 78 Z" fill="url(#rayas)"/>
+            <path d="M16 92 C90 116 190 112 266 78 L262 64 C190 98 92 100 20 78Z" fill="#a91d16"/>
+            <g fill="#cf3027"><circle cx="128" cy="-306" r="20"/><circle cx="110" cy="-318" r="13"/><circle cx="146" cy="-318" r="13"/><circle cx="128" cy="-332" r="12"/><circle cx="112" cy="-296" r="10"/><circle cx="145" cy="-294" r="10"/></g>
+          </g>
+          <!-- corona -->
+          <g class="disfraz">
+            <path d="M14 96 L2 -40 L72 20 L138 -88 L204 20 L276 -40 L264 92 C190 72 90 72 14 96Z" fill="#e8b530"/>
+            <path d="M14 96 C90 72 190 72 264 92 L262 70 C190 52 90 52 16 74Z" fill="#c38c17"/>
+            <circle cx="138" cy="-46" r="15" fill="#c8241c"/><circle cx="74" cy="44" r="10" fill="#2552b8"/><circle cx="204" cy="44" r="10" fill="#2552b8"/>
+          </g>
+          <!-- sombrero de bruja -->
+          <g class="disfraz">
+            <path d="M150 -290 C120 -230 96 -140 82 -20 L196 -16 C194 -110 196 -200 230 -250 C196 -238 168 -262 150 -290Z" fill="#2b2541"/>
+            <path d="M84 -40 L196 -36 L198 -4 L82 -6Z" fill="url(#rayas-v)"/>
+            <ellipse cx="140" cy="20" rx="168" ry="40" fill="#231e36"/>
+          </g>
+          <!-- cuernitos -->
+          <g class="disfraz">
+            <path d="M30 92 C-6 40 -4 -40 30 -96 C40 -36 70 18 110 54Z" fill="#c8241c"/>
+            <path d="M248 88 C284 36 282 -44 248 -100 C238 -40 208 14 168 50Z" fill="#c8241c"/>
+            <path d="M10 96 C80 60 200 56 270 92" fill="none" stroke="#1d1d1d" stroke-width="14" stroke-linecap="round"/>
+          </g>
+        </g>
+      </svg>
+    </button>
+  </div>
+  <p class="pie-foto">tocá y cambiá el disfraz</p>
+
+  <h1><span class="sr">Cumplo 23 y hago una </span>Fiesta de disfraces</h1>
+  <dl class="qas">
+    <div><dt>¿Dónde?</dt><dd>Mi casa</dd></div>
+    <div><dt>¿Cuándo?</dt><dd>21:30 hs</dd></div>
+    <div><dt>¿De qué?</dt><dd>Libre</dd></div>
+  </dl>
+
+  <div class="abajo">
+    <svg class="cal" viewBox="0 0 400 360" role="img" aria-label="Sábado 31 de octubre de 2026, marcado en el calendario">
+      <defs>
+        <linearGradient id="hoja" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#959593"/><stop offset="1" stop-color="#7e7e7c"/></linearGradient>
+        <filter id="marcador" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="3" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="5" result="d"/>
+          <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="9" result="g"/>
+          <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.9" result="ga"/>
+          <feComposite in="d" in2="ga" operator="in"/>
+        </filter>
+      </defs>
+      <rect width="400" height="360" rx="4" fill="url(#hoja)"/>
+      <text x="28" y="96" font-family="'Open Sans', Arial, sans-serif" font-weight="700" font-size="36" fill="#1c1c1c">2026</text>
+      <text x="376" y="64" font-family="'Open Sans', Arial, sans-serif" font-weight="700" font-size="34" fill="#1c1c1c" text-anchor="end">OCTUBRE</text>
+      <g id="cal-grilla" font-family="'Open Sans', Arial, sans-serif" font-weight="600" fill="#1f1f1f" text-anchor="middle"></g>
+      <path transform="translate(-10 6)" filter="url(#marcador)" d="M318 300 C296 284 270 294 274 318 C278 342 318 350 340 334 C360 318 352 290 322 286 C300 284 284 294 282 306 M300 298 C316 284 346 292 350 312" fill="none" stroke="#c8241c" stroke-width="11" stroke-linecap="round" opacity=".88"/>
+    </svg>
+    <img class="auto" src="../../assets/auto-puntos.webp" width="566" height="510" alt="Vicente de chico manejando un autito de juguete">
+  </div>
+  <p class="cuenta" id="cuenta"></p>
+
+  <div class="acciones">
+    <a class="btn btn-wsp" id="btn-wsp" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>
+      Confirmo por WhatsApp</a>
+    <div class="fila">
+      <a class="btn" id="btn-mapa" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        Cómo llegar</a>
+      <a class="btn" id="btn-agenda" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        Agendar</a>
+    </div>
+    <button class="btn" id="btn-compartir" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
+      Compartir invitación</button>
+  </div>
+  <p class="pie">Vicente · 31.10.2026</p>
+</main>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<style>.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }</style>
+<script>
+  // ====== Datos del cumple ======
+  const CONFIG = {
+    fecha: '2026-10-31T21:30:00-03:00',
+    horas: 5,                                    // duración para el calendario
+    lugar: 'Casa de Vicente, Pilar, Córdoba',
+    mapa: 'https://maps.app.goo.gl/r1agEd2edMjcGBZU9',
+    whatsapp: '5493572534546',                   // con código de país, sin +
+    mensaje: '¡Vicente! Voy a tu cumple de disfraces el sábado 31 🎭'
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const inicio = new Date(CONFIG.fecha);
+  const fin = new Date(inicio.getTime() + CONFIG.horas * 3600e3);
+  const utc = (d) => d.toISOString().replace(/[-:]|\.\d{3}/g, '');
+
+  $('btn-wsp').href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(CONFIG.mensaje);
+  $('btn-mapa').href = CONFIG.mapa;
+  $('btn-agenda').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text=' + encodeURIComponent('Cumple 23 de Vicente · Fiesta de disfraces')
+    + '&dates=' + utc(inicio) + '/' + utc(fin)
+    + '&location=' + encodeURIComponent(CONFIG.lugar)
+    + '&details=' + encodeURIComponent('Disfraz libre. Cómo llegar: ' + CONFIG.mapa);
+
+  // Disfraces: cada toque cambia el de la cabeza
+  const cabeza = $('cabeza');
+  const disfraces = [...cabeza.querySelectorAll('.disfraz')];
+  let i = 0;
+  cabeza.addEventListener('click', () => {
+    cabeza.classList.remove('wiggle');
+    disfraces[i].classList.remove('on'); i = (i + 1) % disfraces.length; disfraces[i].classList.add('on');
+    if (navigator.vibrate) navigator.vibrate(15);
+  });
+
+  // Calendario de papel: octubre 2026 arranca jueves, semana de lunes a domingo
+  const ns = 'http://www.w3.org/2000/svg', g = $('cal-grilla');
+  const col = (c) => 46 + c * 51.5;
+  const add = (tag, attrs, txt) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (txt) e.textContent = txt; g.appendChild(e); };
+  ['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'].forEach((d, c) => add('text', { x: col(c), y: 136, 'font-size': 15 }, d));
+  add('line', { x1: 22, x2: 378, y1: 148, y2: 148, stroke: '#3a3a3a', 'stroke-width': 1.2, opacity: .55 });
+  for (let f = 0; f < 4; f++) add('line', { x1: 22, x2: 378, y1: 198 + f * 36, y2: 198 + f * 36, stroke: '#3a3a3a', 'stroke-width': 1, opacity: .4 });
+  for (let d = 1; d <= 31; d++) { const p = d + 2; add('text', { x: col(p % 7), y: 186 + Math.floor(p / 7) * 36, 'font-size': 22 }, d); }
+
+  // Cuenta regresiva en días (hora de Argentina)
+  const ahora = Date.now();
+  const dia = (t) => new Date(t).toLocaleDateString('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' });
+  const faltan = Math.round((new Date(dia(inicio)) - new Date(dia(ahora))) / 864e5);
+  $('cuenta').innerHTML = ahora > fin.getTime() ? 'Gracias por venir.'
+    : ahora >= inicio.getTime() ? '<strong>Es ahora.</strong> Vení disfrazado.'
+    : faltan === 0 ? '<strong>¡Es hoy!</strong> Nos vemos a las 21:30.'
+    : faltan === 1 ? '<strong>¡Es mañana!</strong> Andá preparando el disfraz.'
+    : 'Faltan <strong>' + faltan + ' días</strong>. Andá pensando el disfraz.';
+
+  let tt;
+  function toast(m) { const el = $('toast'); el.textContent = m; el.hidden = false; clearTimeout(tt); tt = setTimeout(() => el.hidden = true, 2200); }
+  $('btn-compartir').addEventListener('click', async () => {
+    const url = location.href.split('#')[0];
+    if (navigator.share) {
+      try { await navigator.share({ title: 'Vicente 23 · Fiesta de disfraces', text: 'Cumplo 23 y hago una fiesta de disfraces 🎭 Sábado 31/10', url }); } catch (e) {}
+    } else {
+      try { await navigator.clipboard.writeText(url); toast('Link copiado'); } catch (e) { toast(url); }
+    }
+  });
+
+  // ===== Selector de fuentes (boceto) =====
+  const REFS = {
+    actual: 'Lo publicado: 23 en crayón + Syne.',
+    s33: 'Como el afiche "33": todo en Syne, título en minúscula.',
+    pincel: 'Como el "30" azul y "Stay Curious": todo a pincel/marcador.',
+    maquina: 'Como el de tequila y el "31 Octubre" de la IA: máquina de escribir + datos en birome roja.',
+    recortes: 'Como la imagen de la IA: título en letras recortadas tipo nota de rescate.',
+    grotesk: 'Como "Victoria’s Birthday" y "House Party": grotesk pesado + tablita a mano.',
+    serif: 'Como el "22" rojo: título serif elegante.',
+    boliche: 'Como los afiches de Classico: letra alta y angosta + datos en mono.',
+    nota: 'Como el "NOTE: don’t forget…" de tequila: título escrito en birome roja.',
+    brocha: 'Como el "Fiesta de disfraces" de la IA: brocha suave.',
+    dymo: 'Título en cintas de etiquetadora, para sumar al collage.',
+    ancha: 'Como el "years of awesomness" del 33: letra ancha retro.',
+    gastada: 'Máquina de escribir gastada, con la tinta corrida.',
+    o: 'Mezcla K + L: las cintas, pero con la letra ancha.',
+    p: 'Mezcla K + L: título ancho y los ¿Dónde?/¿Cuándo?/¿De qué? en cintas.',
+    q: 'Mezcla K + L: “Cumplo 23 y hago una” en cinta arriba del título ancho.',
+    r: 'Mezcla K + L: título en cintas y etiquetas de los datos en letra ancha.',
+    diario: 'Letras recortadas como la E, pero solo blanco, negro y rojo.'
+  };
+  const h1 = document.querySelector('h1'), h1Orig = h1.innerHTML;
+  const recortesEstilos = [
+    ['#f4e9c8', '#121212', 'Anton'], ['#121212', '#f3f2ee', '"Archivo Black"'], ['#d9e4f2', '#121212', '"DM Serif Display"'],
+    ['#c8241c', '#f3f2ee', '"Courier Prime"'], ['#fff', '#121212', '"Permanent Marker"'], ['#f6d3d6', '#c8241c', 'Syne'],
+    ['#e7e2f3', '#121212', 'Kalam'], ['#2a4f9e', '#f3f2ee', 'Anton'], ['#d8ecd8', '#121212', '"Courier Prime"']
+  ];
+  const diarioEstilos = [
+    ['#f3f2ee', '#121212', 'Anton'], ['#121212', '#f3f2ee', '"DM Serif Display"'], ['#fff', '#121212', '"Courier Prime"'],
+    ['#c8241c', '#f3f2ee', '"Archivo Black"'], ['#dcdbd6', '#121212', '"DM Serif Display"'], ['#121212', '#f3f2ee', 'Anton']
+  ];
+  function recortes(estilos = recortesEstilos) {
+    let n = 7;
+    h1.innerHTML = '<span class="sr">Cumplo 23 y hago una </span>' + [...'Fiesta de disfraces'].map((c) => {
+      if (c === ' ') return '<span class="rec esp"></span>';
+      n = (n * 31 + 11) % 97;
+      const [bg, fg, ff] = estilos[n % estilos.length];
+      return '<span class="rec" aria-hidden="true" style="background:' + bg + ';color:' + fg + ';font-family:' + ff + ';transform:rotate(' + ((n % 9) - 4) + 'deg)">' + c + '</span>';
+    }).join('');
+  }
+  function elegir(f) {
+    document.documentElement.dataset.f = f;
+    h1.innerHTML = h1Orig;
+    if (f === 'recortes') recortes();
+    if (f === 'diario') recortes(diarioEstilos);
+    const cintas = '<span class="sr">Cumplo 23 y hago una </span><span class="cinta">Fiesta</span><span class="cinta">de</span><span class="cinta">disfraces</span>';
+    if (f === 'o' || f === 'r') h1.innerHTML = cintas;
+    if (f === 'q') h1.innerHTML = '<span class="cinta chica">Cumplo 23 y hago una</span><span>Fiesta de disfraces</span>';
+    document.querySelectorAll('.qas dt').forEach((dt, k) => { dt.className = f === 'p' ? 'cinta chica' : ''; dt.style.transform = f === 'p' ? 'rotate(' + [-2, 1.5, -1][k] + 'deg)' : ''; });
+    if (f === 'dymo') h1.innerHTML = '<span class="sr">Cumplo 23 y hago una </span><span class="cinta">Fiesta</span><span class="cinta">de</span><span class="cinta">disfraces</span>';
+    $('ref').textContent = REFS[f];
+    document.querySelectorAll('#chips button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.f === f));
+    try { localStorage.setItem('fuente', f); } catch (e) {}
+  }
+  $('chips').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) elegir(b.dataset.f); });
+  let guardada = new URLSearchParams(location.search).get('f');
+  if (!guardada) try { guardada = localStorage.getItem('fuente'); } catch (e) {}
+  elegir(REFS[guardada] ? guardada : 'actual');
+</script>
+</body>
+</html>
