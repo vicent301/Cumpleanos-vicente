@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bocetos después de las 00</title>
+<style>
+  :root { --fondo: #e6e5e1; --tinta: #121212; --activo: #1b3a86; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --fondo: #1a1a1a; --tinta: #f1f1ee; --activo: #6f95ea; } }
+  :root[data-theme="dark"] { --fondo: #1a1a1a; --tinta: #f1f1ee; --activo: #6f95ea; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--fondo); color: var(--tinta); font: 600 14px/1.3 system-ui, sans-serif; display: flex; flex-direction: column; }
+  nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; padding: 8px 16px; max-width: 480px; width: 100%; margin: 0 auto; }
+  button { font: inherit; padding: 10px 6px; border-radius: 8px; border: 2px solid var(--tinta); background: transparent; color: var(--tinta); cursor: pointer; line-height: 1.15; }
+  button[aria-pressed="true"] { background: var(--activo); border-color: var(--activo); color: #fff; }
+  button small { display: block; font-weight: 500; opacity: .8; }
+  iframe { flex: 1; width: 100%; max-width: 480px; margin: 0 auto; border: 0; display: block; background: #e6e5e1; }
+</style>
+</head>
+<body>
+<nav>
+  <button type="button" data-src="a.html" aria-pressed="false">A<small>Imagen de la IA</small></button>
+  <button type="button" data-src="b.html" aria-pressed="true">B<small>Como la principal</small></button>
+</nav>
+<iframe id="vista" src="b.html" title="Boceto de la invitación"></iframe>
+<script>
+  const botones = document.querySelectorAll('nav button');
+  botones.forEach((b) => b.addEventListener('click', () => {
+    botones.forEach((o) => o.setAttribute('aria-pressed', o === b));
+    document.getElementById('vista').src = b.dataset.src;
+  }));
+</script>
+</body>
+</html>
